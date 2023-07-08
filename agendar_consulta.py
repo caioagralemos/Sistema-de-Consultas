@@ -1,14 +1,15 @@
-import json
 import os
-from components.nova_consulta import Data, Consulta, novaConsulta
+import json
+from components.classes.data import Data
+from components.classes.consulta import Consulta
 from components.opcao_1 import opcao1
 from components.opcao_2 import opcao2
-from components.disponibilidade_data import disponibilidade_data
-
+from components.nova_consulta import nova_consulta
+from components.helpers.disponibilidade_data import disponibilidade_data
 
 def marcarConsulta():
     print('\nBem vindo ao Sistema de Alocação de Consultas\nMarque suas sessões de terapia contra problemas na pele\n')
-    consulta = novaConsulta()
+    consulta = nova_consulta()
 
     diretorio = './data/'
     caminho_arquivo = f'{diretorio}reservas.json'
