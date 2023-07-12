@@ -27,7 +27,7 @@ def marcarConsulta():
 
     dataDisponivel = disponibilidade_data(consulta, objeto_python)
 
-    if dataDisponivel:
+    if dataDisponivel == 'ok':
         opcao = int(input('\nEscolha o método de seu tratamento:\n1 para a opção de uma sessão por semana - (5 semanas)\n2 para a opção de uma sessão por mês - (5 meses)\n'))
         while True:
             if opcao != 1 and opcao != 2:
@@ -51,6 +51,6 @@ def marcarConsulta():
 
     else:
         print(
-            f'Data indisponível! Tente novamente com outra data.')
+            f'Data indisponível! Tente novamente com outra data.\nMotivo: {dataDisponivel}')
 
 marcarConsulta()
