@@ -1,3 +1,5 @@
+from components.helpers.disponibilidade_data import disponibilidade_data
+
 def opcao1(consultaBase, objeto):
     meuDia = consultaBase['data']['dia']
     meuMes = consultaBase['data']['mes']
@@ -47,6 +49,12 @@ def opcao1(consultaBase, objeto):
 
         novoObjeto = consultaBase.copy()
         novoObjeto['data'] = {'dia': dia, 'mes': mes, 'ano': ano}
+
+        dataDisponivel = disponibilidade_data(ano, mes, dia, objeto)
+
+        if dataDisponivel != 'ok':
+            return dataDisponivel
+
         objeto.append(novoObjeto)
 
     return objeto

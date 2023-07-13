@@ -7,6 +7,7 @@ from components.opcao_2 import opcao2
 from components.nova_consulta import nova_consulta
 from components.helpers.disponibilidade_data import disponibilidade_data
 
+
 def marcarConsulta():
     print('\nBem vindo ao Sistema de Alocação de Consultas\nMarque suas sessões de terapia contra problemas na pele\n')
     consulta = nova_consulta()
@@ -25,32 +26,36 @@ def marcarConsulta():
     with open('./data/reservas.json', 'r') as arquivo:
         objeto_python = json.load(arquivo)
 
-    dataDisponivel = disponibilidade_data(consulta, objeto_python)
-
-    if dataDisponivel == 'ok':
-        opcao = int(input('\nEscolha o método de seu tratamento:\n1 para a opção de uma sessão por semana - (5 semanas)\n2 para a opção de uma sessão por mês - (5 meses)\n'))
-        while True:
-            if opcao != 1 and opcao != 2:
-                opcao = int(input(
+    opcao = int(input('\nEscolha o método de seu tratamento:\n1 para a opção de uma sessão por semana - (5 semanas)\n2 para a opção de uma sessão por mês - (5 meses)\n'))
+    while True:
+        if opcao != 1 and opcao != 2:
+            opcao = int(input(
                     '\nEscolha o método de seu tratamento:\n1 para a opção de uma sessão por semana - (5 semanas)\n2 para a opção de uma sessão por mês - (5 meses)\n'))
-            else:
-                break
+        else:
+            break
 
-        if opcao == 1:
-            obj = opcao1(consultaBase=consulta.json(), objeto=objeto_python)
+    if opcao == 1:
+        obj = opcao1(consultaBase=consulta.json(), objeto=objeto_python)
+
+        if type(obj) == str:
+            print(f'Data indisponível! Tente novamente com outra data.\nMotivo: {obj}')
+            return False
+        else:
             objeto_python = obj
 
-        elif opcao == 2:
-            obj = opcao2(consultaBase=consulta.json(), objeto=objeto_python)
+    elif opcao == 2:
+        obj = opcao2(consultaBase=consulta.json(), objeto=objeto_python)
+        if type(obj) == str:
+            print(f'Data indisponível! Tente novamente com outra data.\nMotivo: {obj}')
+            return False
+        else:
             objeto_python = obj
 
-        with open('./data/reservas.json', 'w') as arquivo:
-            json.dump(objeto_python, arquivo)
+    with open('./data/reservas.json', 'w') as arquivo:
+        json.dump(objeto_python, arquivo)
 
-        print('\nConsultas marcadas com sucesso!')
+    print('\nConsultas marcadas com sucesso!')
+    return True
 
-    else:
-        print(
-            f'Data indisponível! Tente novamente com outra data.\nMotivo: {dataDisponivel}')
 
 marcarConsulta()
