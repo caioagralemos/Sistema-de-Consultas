@@ -3,10 +3,10 @@ import json
 import datetime
 
 diretorio = './data/'
-caminho_arquivo = f'{diretorio}reservas.json'
+caminho_arquivo = f'{diretorio}consultas.json'
 dia_de_hoje = datetime.datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
 
-print(f'\nBem vindo ao Sistema de Alocação de Consultas\nConsulte as sessões marcadas \n')
+print(f'\nBem vindo ao Sistema de Alocação de Consultas\nConsulte as sessões marcadas\n')
 
 if not os.path.isdir(diretorio):
     os.makedirs(diretorio)
@@ -16,7 +16,7 @@ if not os.path.isfile(caminho_arquivo):
     with open(caminho_arquivo, 'w') as arquivo:
         json.dump(dados_iniciais, arquivo)
 
-with open('./data/reservas.json', 'r') as arquivo:
+with open('./data/consultas.json', 'r') as arquivo:
     # Carrega o conteúdo do arquivo JSON em um objeto Python
     objeto_python = json.load(arquivo)
 
@@ -72,7 +72,7 @@ if choice == '3':
     consultas_futuras = []
     for consulta in todas_consultas:
         data_consulta = obter_data(consulta)
-        if data_consulta > dia_de_hoje:
+        if data_consulta >= dia_de_hoje:
             consultas_futuras.append(consulta)
     
     if consultas_futuras == []:

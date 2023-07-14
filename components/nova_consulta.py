@@ -6,9 +6,8 @@ from components.helpers.checar_nome_valido import checar_nome_valido
 def nova_consulta():
     data=nova_data()
     print('\nData pré-alocada com sucesso.\n')
-    ok=''
 
-    nome=input('Diga o seu nome: ').strip()
+    nome=input('Diga o seu nome: ').strip() # strip tira os espaços iniciais e finais sobrando
     while True:
         if checar_nome_valido(nome):
             break
@@ -22,7 +21,7 @@ def nova_consulta():
             break
         else:
             print('CPF inválido!')
-        cpf=input('Diga seu CPF: ').replace('-', '').replace('.', '').strip()
+            cpf=input('Diga seu CPF: ').replace('-', '').replace('.', '').strip()
 
     ok=input(f'\n\nDados de sua consulta:\nPaciente: {nome}\nCPF {cpf}\nConsulta agendada em: {data.dia}/{data.mes}/{data.ano}\n\nDigite OK para confirmar: ').lower()
 

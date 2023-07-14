@@ -1,8 +1,8 @@
-from components.helpers.dia_passou import dia_passou
+from components.helpers.validacao_data import validacao_data
 from components.classes.data import Data
 
 def nova_data():
-    ano, mes, dia = dia_passou()
+    ano, mes, dia = validacao_data()
 
     while True:
         razao=''
@@ -10,20 +10,28 @@ def nova_data():
             if ano % 4 == 0:
                 if dia <= 29:
                     break
+                else:
+                    razao = "Dia inválido. Fevereiro tem 29 dias."
             else:
                 if dia <= 28:
                     break
+                else:
+                    razao = "Dia inválido. Fevereiro tem 28 dias."
 
         elif mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12:
             if dia <= 31:
                 break
+            else:
+                razao = "Dia inválido. Esse mês tem 31 dias."
 
         elif mes == 4 or mes == 6 or mes == 9 or mes == 11:
             if dia <= 30:
                 break
+            else:
+                razao = "Dia inválido. Esse mês tem 30 dias."
 
-        print('Data Inválida!\n')
+        print(f'Data Inválida!\n{razao}\n')
 
-        ano, mes, dia = dia_passou()
+        ano, mes, dia = validacao_data()
 
     return Data(dia, mes, ano)

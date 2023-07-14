@@ -1,29 +1,25 @@
 import os
 import json
-from components.classes.data import Data
-from components.classes.consulta import Consulta
 from components.opcao_1 import opcao1
 from components.opcao_2 import opcao2
 from components.nova_consulta import nova_consulta
-from components.helpers.disponibilidade_data import disponibilidade_data
-
 
 def marcarConsulta():
     print('\nBem vindo ao Sistema de Alocação de Consultas\nMarque suas sessões de terapia contra problemas na pele\n')
     consulta = nova_consulta()
 
     diretorio = './data/'
-    caminho_arquivo = f'{diretorio}reservas.json'
+    caminho_arquivo = f'{diretorio}consultas.json'
 
     if not os.path.isdir(diretorio):
-        os.makedirs(diretorio)
+        os.makedirs(diretorio) # se o dir não existir, ele cria o dir
 
     if not os.path.isfile(caminho_arquivo):
         dados_iniciais = []
         with open(caminho_arquivo, 'w') as arquivo:
-            json.dump(dados_iniciais, arquivo)
+            json.dump(dados_iniciais, arquivo) # se não houver um arquivo, cria o arquivo json com um array vazio
 
-    with open('./data/reservas.json', 'r') as arquivo:
+    with open('./data/consultas.json', 'r') as arquivo:
         objeto_python = json.load(arquivo)
 
     opcao = int(input('\nEscolha o método de seu tratamento:\n1 para a opção de uma sessão por semana - (5 semanas)\n2 para a opção de uma sessão por mês - (5 meses)\n'))
@@ -51,7 +47,7 @@ def marcarConsulta():
         else:
             objeto_python = obj
 
-    with open('./data/reservas.json', 'w') as arquivo:
+    with open('./data/consultas.json', 'w') as arquivo:
         json.dump(objeto_python, arquivo)
 
     print('\nConsultas marcadas com sucesso!')

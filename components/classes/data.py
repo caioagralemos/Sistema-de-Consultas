@@ -4,9 +4,9 @@ class Data:
         self.mes = mes
         self.ano = ano
 
-    @property
+    @property # getter // x.data = isso
     def data(self):
         return f'{self.dia}/{self.mes}/{self.ano}'
 
-    def json(self):
+    def json(self): # transforma uma data em json puro
         return dict(dia=self.dia, mes=self.mes, ano=self.ano)
