@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'pages.apps.PagesConfig',
-    'data.apps.DataConfig',
+    'datas.apps.DatasConfig',
     'consultas.apps.ConsultasConfig',
     'django.contrib.admin',
     'django.contrib.auth',

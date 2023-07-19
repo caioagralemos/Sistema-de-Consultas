@@ -1,7 +1,9 @@
 from django.db import models
-from data.models import Data
+from datas.models import Data
 
 # Create your models here.
+
+
 
 class Consulta(models.Model):
     nome = models.CharField(max_length=70)
