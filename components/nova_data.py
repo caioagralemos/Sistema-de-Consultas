@@ -5,7 +5,6 @@ def nova_data():
     ano, mes, dia = validacao_data()
 
     while True:
-        razao=''
         if mes == 2:
             if ano % 4 == 0:
                 if dia <= 29:
