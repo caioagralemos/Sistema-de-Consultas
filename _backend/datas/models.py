@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from datas.helpers.disponibilidade_data import disponibilidade_data
 from django.core.exceptions import ValidationError
 
 # Create your models here.
@@ -58,3 +59,4 @@ class Data(models.Model):
         validar_ano(self.ano)
         validar_mes(self.ano, self.mes)
         validar_dia(self.ano, self.mes, self.dia)
+        disponibilidade_data(self.ano, self.mes, self.dia)
