@@ -6,7 +6,7 @@ def disponibilidade_data(ano, mes, dia):
     data = datetime(ano, mes, dia)
     umano = datetime.now() + timedelta(days=365)
 
-    if checar_feriado(data): # se o dia for feriado
+    if checar_feriado(data, dia, mes): # se o dia for feriado
         raise ValidationError(f'Uma das consultas caiu num feriado.\nConsulta do dia {dia}/{mes}/{ano}')
 
     if data > umano: # se for mais de um ano na frente

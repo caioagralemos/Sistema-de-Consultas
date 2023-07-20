@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'datas.apps.DatasConfig',
     'consultas.apps.ConsultasConfig',
+    'medico.apps.MedicoConfig',
+    'paciente.apps.PacienteConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
