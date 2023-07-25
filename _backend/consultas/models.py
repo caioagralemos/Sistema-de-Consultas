@@ -23,7 +23,7 @@ class Consulta(models.Model):
     ]
 
     paciente = models.ForeignKey(Paciente, on_delete=models.DO_NOTHING, related_name='consultas')
-    medico = models.ForeignKey(Medico, on_delete=models.DO_NOTHING)
+    medico = models.ForeignKey(Medico, on_delete=models.CASCADE, related_name='consultas')
     data = models.ForeignKey(Data, on_delete=models.DO_NOTHING)
     servico = models.CharField(
         choices=OPCOES_CHOICES,

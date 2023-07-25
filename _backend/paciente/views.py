@@ -6,6 +6,7 @@ from paciente.helpers.checar_cpf_valido import checar_cpf_valido
 from paciente.helpers.checar_nome_valido import checar_nome_valido
 
 from .models import Paciente
+from consultas.models import Consulta
 
 # Create your views here.
 
@@ -13,6 +14,7 @@ def register(request):
     if request.method == 'POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
+        email = request.POST['email']
         username = request.POST['username']
         password = request.POST['password']
         password2 = request.POST['password2']
@@ -65,7 +67,7 @@ def register(request):
             return redirect('register')
         else:
             # Criando um novo usuário
-            user = User.objects.create_user(username=username, password=password, first_name=first_name, last_name=last_name)
+            user = User.objects.create_user(username=username, password=password, first_name=first_name, last_name=last_name, email=email)
             user.save()
 
             # Criando o perfil estendido vinculado ao usuário
@@ -76,7 +78,10 @@ def register(request):
         return render(request, 'paciente/register.html')   
 
 def dashboard(request):
-    return render(request, 'paciente/dashboard.html')
+    context = {
+        'consultas': Consulta.objects.all(),
+    }
+    return render(request, 'paciente/dashboard.html', context)
 
 def login(request):
     if request.method == 'POST':

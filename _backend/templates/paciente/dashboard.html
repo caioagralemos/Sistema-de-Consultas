@@ -1,4 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>DASHBOARD</h1>
+<h1>Consultas de {{user.first_name}}</h1>
+{% for consulta in consultas %}
+    {% if consulta.paciente.user.username == user.username %}
+        <div>
+            {{ consulta.paciente }} - {{ consulta.medico }}
+        </div>
+    {% endif %}
+{% endfor %}
 {% endblock %}
