@@ -35,17 +35,17 @@ class Medico(models.Model):
     def especialidades(self):
         esp = []
         if self.aftas:
-            esp.append('aftas')
+            esp.append('Aftas')
         if self.consulta:
-            esp.append('consultas')
+            esp.append('Consultas')
         if self.hipersensibilidade:
-            esp.append('hipersensibilidade')
+            esp.append('Hipersensibilidade')
         if self.lesoes:
-            esp.append('lesoes')
+            esp.append('Lesões')
         if self.nevralgia:
-            esp.append('nevralgias')
+            esp.append('Nevralgias')
         if self.pos_cirurgia:
-            esp.append('pos-cirurgias')
+            esp.append('Pós-Cirurgias')
         return esp
     
     @property

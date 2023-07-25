@@ -59,6 +59,12 @@ def register(request):
         elif not User.objects.filter(username=username).exists:
             print('Usuário já registrado!')
             return redirect('register')
+        elif not User.objects.filter(cpf=cpf).exists:
+            print('CPF já registrado!')
+            return redirect('register')
+        elif not User.objects.filter(email=email).exists:
+            print('Email já registrado!')
+            return redirect('register')
         elif checar_nome_valido(nome) is False:
             print('Nome inválido!')
             return redirect('register')
@@ -92,7 +98,11 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect('dashboard')
+            try:
+                if user.medico:
+                    return redirect('medico-dashboard')
+            except:
+                return redirect('dashboard')
         else:
             print('Something went wrong. Check your credentials and try again')
             return redirect('login')
