@@ -7,49 +7,76 @@
     {% if user.is_authenticated %}
     <form class="text-center mt-2 m-5">
       {% csrf_token %}
-      <div class="mb-3 text-start">
-          <label for="basic-url" class="form-label text-start">Nome</label>
-          <div class="input-group">
-            <input type="text" placeholder="José da Silva" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
-          </div>
-      </div>
 
-      <div class="mb-3 text-start">
-          <label for="basic-url" class="form-label text-start">CPF</label>
-          <div class="input-group">
-            <input type="text" placeholder="123.456.789-00" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
-          </div>
-      </div>
-        
       <div class="input-group mb-3">
-          <span class="input-group-text"><i class="uil uil-medkit"></i></span>
+        <span class="input-group-text"><i class="uil uil-band-aid"></i></span>
+        <select class="form-select" id="inputGroupSelect01">
+        <option selected>Escolha seu serviço</option>
+
+        {% if user.paciente.aftas %}
+        <option value="aftas">Aftas</option>
+        {% endif %}
+
+        {% if user.paciente.hipersensibilidade %}
+        <option value="hipersensiblidade">Hipersensiblidade</option>
+        {% endif %}
+
+        {% if user.paciente.lesoes %}
+        <option value="lesoes">Lesões</option>
+        {% endif %}
+
+        {% if user.paciente.pos_cirurgia%}
+        <option value="pos_cirurgia">Pós-Cirurgia</option>
+        {% endif %}
+
+        {% if user.paciente.nevralgia %}
+        <option value="nevralgia">Nevralgia</option>
+        {% endif %}
+
+        {% if user.paciente.consulta %}
+        <option value="consulta">Consulta</option>
+        {% endif %}
+        </select>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text"><i class="uil uil-medkit"></i></span>
+        <select class="form-select" id="inputGroupSelect01">
+        <option selected>Escolha seu médico</option>
+          {% for medico in medicos %}
+          <option value="{{medico.user.username}}">{{medico}}</option>
+          {%endfor%}
+        </select>
+      </div>
+
+      <div class="input-group mb-3">
+          <span class="input-group-text"><i class="uil uil-clock"></i></span>
           <select class="form-select" id="inputGroupSelect01">
-          <option selected>Escolha seu serviço</option>
+            <option selected>Escolha o horário</option>
+            <option value="0800">08:00</option>
+            <option value="0830">08:30</option>
+            <option value="0900">09:00</option>
+            <option value="0930">09:30</option>
+            <option value="1000">10:00</option>
+            <option value="1030">10:30</option>
+            <option value="1100">11:00</option>
+            <option value="1130">11:30</option>
+            <option value="1200">12:00</option>
+            <option value="1400">14:00</option>
+            <option value="1430">14:30</option>
+            <option value="1500">15:00</option>
+            <option value="1530">15:30</option>
+            <option value="1600">16:00</option>
+            <option value="1630">16:30</option>
+            <option value="1700">17:00</option>
+            <option value="1730">17:30</option>
+            <option value="1800">18:00</option>
+            <option value="1830">18:30</option>
+            <option value="1900">19:00</option>
+            <option value="1930">19:30</option>
+            <option value="2000">20:00</option>
+            </select>
 
-          {% if user.paciente.aftas %}
-          <option value="aftas">Aftas</option>
-          {% endif %}
-
-          {% if user.paciente.hipersensibilidade %}
-          <option value="hipersensiblidade">Hipersensiblidade</option>
-          {% endif %}
-
-          {% if user.paciente.lesoes %}
-          <option value="lesoes">Lesões</option>
-          {% endif %}
-
-          {% if user.paciente.pos_cirurgia%}
-          <option value="pos_cirurgia">Pós-Cirurgia</option>
-          {% endif %}
-
-          {% if user.paciente.nevralgia %}
-          <option value="nevralgia">Nevralgia</option>
-          {% endif %}
-
-          {% if user.paciente.consulta %}
-          <option value="consulta">Consulta</option>
-          {% endif %}
-          </select>
           <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
           <input type="date" class="form-control" placeholder="Server" aria-label="Server">
         </div>
@@ -59,8 +86,8 @@
 
     {% else %}
 
-    <h1 class='p-5 text-center'>Você precisa entrar para marcar uma consulta.</h1>
-
+    <h1 class='p-4 text-center'>Você precisa entrar para marcar uma consulta.</h1>
+    
     {% endif %}
   </div>
 {% endblock %}

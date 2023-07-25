@@ -111,11 +111,19 @@
 
     {% block content %} {% endblock %}
 
-        <!-- Footer -->
-        <footer id="main-footer" class="py-4 bg-primary text-white text-center">
-            Copyright &copy;
-            <span class="year"></span> Hospital Universitário da Universidade Federal de Alagoas
-          </footer>
-
+    <!-- Footer -->
+    <footer class="footer py-3 bg-primary text-white
+    {% if 'agendarconsulta' in request.path and user.is_authenticated %}
+    {%elif 'register' in request.path%}
+    {%else%}
+    fixed-bottom
+    {%endif%}
+    text-center">
+      Copyright &copy;
+      <span class="year"></span> Hospital Universitário da Universidade Federal de Alagoas
+      <p>Hospital Universitário Prof. Alberto Antunes
+          Av. Lourival Melo Mota, S/N - Tabuleiro do Martins - 57072-900
+          Maceió - AL Telefone: 82 3202-3800</p>
+      </footer>
   </body>
 </html>
