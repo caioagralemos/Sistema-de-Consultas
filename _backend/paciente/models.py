@@ -1,11 +1,13 @@
 from django.db import models
 from paciente.helpers.checar_cpf_valido import checar_cpf_valido
 from paciente.helpers.checar_nome_valido import checar_nome_valido
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 class Paciente(models.Model):
-    nome = models.CharField(max_length=70)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
     cpf = models.CharField(max_length=14)
 
     aftas = models.BooleanField(default=False)
@@ -15,6 +17,9 @@ class Paciente(models.Model):
     nevralgia = models.BooleanField(default=False)
     consulta = models.BooleanField(default=False)
 
+    @property
+    def nome(self):
+        return f'{self.user.first_name} {self.user.last_name}'
 
     @property
     def prontuario(self):
@@ -34,7 +39,7 @@ class Paciente(models.Model):
         return doencas
     
     def __str__(self):
-        return self.nome
+        return f'{self.user.first_name} {self.user.last_name}'
 
     def clean(self):
         checar_nome_valido(self.nome)

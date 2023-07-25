@@ -1,11 +1,13 @@
 from django.db import models
 from medico.helpers.checar_cpf_valido import checar_cpf_valido
 from medico.helpers.checar_nome_valido import checar_nome_valido
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 class Medico(models.Model):
-    nome = models.CharField(max_length=70)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
     cpf = models.CharField(max_length=14)
 
     trabalha_com_aftas = models.BooleanField(default=False)
@@ -21,6 +23,10 @@ class Medico(models.Model):
     trabalha_quinta = models.BooleanField(default=True) # 3
     trabalha_sexta = models.BooleanField(default=True) # 4
     trabalha_sabado = models.BooleanField(default=False) # 5
+
+    @property
+    def nome(self):
+        return f'{self.user.first_name} {self.user.last_name}'
 
     @property
     def especialidades(self):
@@ -74,7 +80,7 @@ class Medico(models.Model):
         return dias
 
     def __str__(self):
-        return self.nome
+        return f'{self.user.first_name} {self.user.last_name}'
     
     def clean(self):
         checar_cpf_valido(self.cpf)
