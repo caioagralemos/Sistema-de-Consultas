@@ -54,22 +54,22 @@ def register(request):
             lesoes = False
 
         if password != password2:
-            print('Senhas diferentes!')
+            messages.error(request, 'Senhas diferentes!')
             return redirect('register')
         elif not User.objects.filter(username=username).exists:
-            print('Usuário já registrado!')
+            messages.error(request, 'Usuário já registrado!')
             return redirect('register')
-        elif not User.objects.filter(cpf=cpf).exists:
-            print('CPF já registrado!')
+        elif not Paciente.objects.filter(cpf=cpf).exists:
+            messages.error(request, 'CPF já registrado!')
             return redirect('register')
         elif not User.objects.filter(email=email).exists:
-            print('Email já registrado!')
+            messages.error(request, 'Email já registrado!')
             return redirect('register')
         elif checar_nome_valido(nome) is False:
-            print('Nome inválido!')
+            messages.error(request, 'Nome inválido!')
             return redirect('register')
         elif checar_cpf_valido(cpf) is False:
-            print('CPF inválido!')
+            messages.error(request, 'CPF inválido!')
             return redirect('register')
         else:
             # Criando um novo usuário
@@ -100,11 +100,13 @@ def login(request):
             auth.login(request, user)
             try:
                 if user.medico:
+                    messages.success(request, f'Bem vindo(a), {user.first_name}')
                     return redirect('medico-dashboard')
             except:
+                messages.success(request, f'Bem vindo(a), {user.first_name}')
                 return redirect('dashboard')
         else:
-            print('Something went wrong. Check your credentials and try again')
+            messages.error(request, 'Algo deu errado. Reveja suas credenciais e tente novamente!')
             return redirect('login')
     else:
         return render(request, 'paciente/login.html')
@@ -112,5 +114,5 @@ def login(request):
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
-        print('You are now logged out!')
+        messages.success(request, 'Você fez logout com sucesso!')
         return redirect('index')

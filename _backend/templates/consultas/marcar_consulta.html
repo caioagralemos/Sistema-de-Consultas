@@ -5,12 +5,12 @@
     <h1 class="text-center pt-3 text-primary-emphasis">Sistema de Marcação de Consultas</h1>
 
     {% if user.is_authenticated %}
-    <form class="text-center mt-2 m-5">
+    <form class="text-center mt-2 m-5" method='POST'>
       {% csrf_token %}
 
       <div class="input-group mb-3">
         <span class="input-group-text"><i class="uil uil-band-aid"></i></span>
-        <select class="form-select" id="inputGroupSelect01">
+        <select class="form-select" id="servico" nome='servico'>
         <option selected>Escolha seu serviço</option>
 
         {% if user.paciente.aftas %}
@@ -41,7 +41,7 @@
 
       <div class="input-group mb-3">
         <span class="input-group-text"><i class="uil uil-medkit"></i></span>
-        <select class="form-select" id="inputGroupSelect01">
+        <select class="form-select" id="medico" nome='medico'>
         <option selected>Escolha seu médico</option>
           {% for medico in medicos %}
           <option value="{{medico.user.username}}">{{medico}}</option>
@@ -51,7 +51,7 @@
 
       <div class="input-group mb-3">
           <span class="input-group-text"><i class="uil uil-clock"></i></span>
-          <select class="form-select" id="inputGroupSelect01">
+          <select class="form-select" id="horario" nome='horario'>
             <option selected>Escolha o horário</option>
             <option value="0800">08:00</option>
             <option value="0830">08:30</option>
@@ -78,10 +78,10 @@
             </select>
 
           <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
-          <input type="date" class="form-control" placeholder="Server" aria-label="Server">
+          <input type="date" class="form-control" placeholder="Server" aria-label="Server" nome='data'>
         </div>
         
-      <button type="button" class="btn btn-outline-light border-primary text-primary-emphasis mt-3">Enviar</button>
+      <button type="button" class="btn btn-light border-primary text-primary-emphasis mt-3">Enviar</button>
     </form>
 
     {% else %}

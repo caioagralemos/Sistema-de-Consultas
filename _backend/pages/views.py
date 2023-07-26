@@ -8,11 +8,5 @@ from medico.models import Medico
 def index(request):
     return render(request, 'pages/index.html')
 
-def agendar_consulta(request):
-    context = {
-        'medicos': Medico.objects.all(),
-    }
-    return render(request, 'pages/marcar_consulta.html', context)
-
 def about(request):
     return render(request, 'pages/about.html')
