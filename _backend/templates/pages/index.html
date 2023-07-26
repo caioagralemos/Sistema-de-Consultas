@@ -1,4 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>HOME</h1>
+<div id="cinza" class="w-100 text-secondary text-center bg-secondary-subtle">
+    <h1 class="mt-2">Sejam bem-vindos ao Hospital Universitário</h1>
+    <h4>Conheça nossa missão e informações de estrutura e financiamento</h4>
+</div>
+
+
+<div class="d-flex justify-content-center">
+    <div class="text-center p-2">
+        <h2 class="text-center text-primary mt-2">Nossa missão</h2>
+        <p>A política administrativa do Diretor Geral, o médico e professor João Macário de Omena Filho, que assumiu
+            a direção em dezembro de 1999 e foi reconduzido ao cargo em 2002 e em 2004, traçou a seguinte missão
+            institucional: “Somos um Hospital Universitário que se propõe a formar profissionais em saúde, num
+            contexto acadêmico de ensino, produção do conhecimento e assistência, com ênfase em excelência,
+            humanização e compromisso social”.
+        </p>
+
+        <h2 class="text-center text-primary mt-2">Estrutura e financiamento</h2>
+        <p>O HU é um órgão suplementar da Universidade Federal de Alagoas - Ufal, que mantém uma relação funcional
+            com o Centro de Ciências da Saúde - CSAU, com ações que abrangem as áreas de ensino, pesquisa e
+            assistência não só à comunidade assistida pelo SUS em Maceió, mas também à pacientes das cidades do
+            interior de Alagoas, sendo por isso, um hospital de referência.</p>
+
+        <p>Em todos os níveis, no âmbito do HU, tem se desenvolvido a sua real vocação para a assistência de
+            referência, principalmente nas seguintes áreas: atendimento à Gestante de Alto Risco, Unidade de Terapia
+            Intensiva - UTI - Adulta, Unidade de Terapia Intensiva - UTI - Neonatal, Unidade de Cuidados
+            Intermediários Neonatal, Banco de Leite Humano, Hospital-dia – Aids, Cirurgias por vídeo, Quimioterapia,
+            Gastroplastia, Neurocirurgia e mais recentemente, o Centro de Oncologia (Cacon).</p>
+
+        <p>Hoje, o HU é referência no Estado na prestação do Serviço Único de Saúde (SUS). A gestão empreendedora da
+            atual direção tem trabalhado cada vez mais pela excelência no atendimento aos que dependem dos serviços
+            oferecidos no hospital.</p>
+
+        <a href='{% url 'agendarconsulta' %}' class="mt-2 btn btn-primary btn-lg p-2 mx-auto">Marcar Consulta</a>
+    </div>
+</div>
+
 {% endblock %}

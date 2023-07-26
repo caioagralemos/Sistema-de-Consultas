@@ -6,6 +6,7 @@ from paciente.helpers.checar_cpf_valido import checar_cpf_valido
 from paciente.helpers.checar_nome_valido import checar_nome_valido
 
 from .models import Paciente
+from consultas.models import Consulta
 
 # Create your views here.
 
@@ -13,6 +14,7 @@ def register(request):
     if request.method == 'POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
+        email = request.POST['email']
         username = request.POST['username']
         password = request.POST['password']
         password2 = request.POST['password2']
@@ -52,20 +54,26 @@ def register(request):
             lesoes = False
 
         if password != password2:
-            print('Senhas diferentes!')
+            messages.error(request, 'Senhas diferentes!')
             return redirect('register')
         elif not User.objects.filter(username=username).exists:
-            print('Usuário já registrado!')
+            messages.error(request, 'Usuário já registrado!')
+            return redirect('register')
+        elif not Paciente.objects.filter(cpf=cpf).exists:
+            messages.error(request, 'CPF já registrado!')
+            return redirect('register')
+        elif not User.objects.filter(email=email).exists:
+            messages.error(request, 'Email já registrado!')
             return redirect('register')
         elif checar_nome_valido(nome) is False:
-            print('Nome inválido!')
+            messages.error(request, 'Nome inválido!')
             return redirect('register')
         elif checar_cpf_valido(cpf) is False:
-            print('CPF inválido!')
+            messages.error(request, 'CPF inválido!')
             return redirect('register')
         else:
             # Criando um novo usuário
-            user = User.objects.create_user(username=username, password=password, first_name=first_name, last_name=last_name)
+            user = User.objects.create_user(username=username, password=password, first_name=first_name, last_name=last_name, email=email)
             user.save()
 
             # Criando o perfil estendido vinculado ao usuário
@@ -76,7 +84,10 @@ def register(request):
         return render(request, 'paciente/register.html')   
 
 def dashboard(request):
-    return render(request, 'paciente/dashboard.html')
+    context = {
+        'consultas': Consulta.objects.all(),
+    }
+    return render(request, 'paciente/dashboard.html', context)
 
 def login(request):
     if request.method == 'POST':
@@ -87,9 +98,15 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect('dashboard')
+            try:
+                if user.medico:
+                    messages.success(request, f'Bem vindo(a), {user.first_name}')
+                    return redirect('medico-dashboard')
+            except:
+                messages.success(request, f'Bem vindo(a), {user.first_name}')
+                return redirect('dashboard')
         else:
-            print('Something went wrong. Check your credentials and try again')
+            messages.error(request, 'Algo deu errado. Reveja suas credenciais e tente novamente!')
             return redirect('login')
     else:
         return render(request, 'paciente/login.html')
@@ -97,5 +114,5 @@ def login(request):
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
-        print('You are now logged out!')
+        messages.success(request, 'Você fez logout com sucesso!')
         return redirect('index')

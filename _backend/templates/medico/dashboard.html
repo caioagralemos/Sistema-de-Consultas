@@ -1,4 +1,19 @@
 {% extends 'base.html' %}
-{% block content %}
-<h1>DASHBOARD DO MÉDICO</h1>
+{% block content %} 
+{% if user.medico %}
+<h1>Consultas do {{user.medico}}</h1>
+{% for consulta in consultas %}
+    {% if consulta.medico.user.username == user.username %}
+    <div class="card">
+        <div class="card-body">
+        <h5 class="card-title">{{consulta.paciente}}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{consulta.data}}</h6>
+        <p class="card-text">Serviço - {{consulta.servico}}</p>
+        </div>
+      </div>
+    {% endif %}
+{% endfor %}
+{% else %}
+<h1 class='p-5 text-center'>404 not Found</h1>
+{% endif %}
 {% endblock %}

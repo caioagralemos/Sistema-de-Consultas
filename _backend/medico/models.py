@@ -3,19 +3,22 @@ from medico.helpers.checar_cpf_valido import checar_cpf_valido
 from medico.helpers.checar_nome_valido import checar_nome_valido
 from django.contrib.auth.models import User
 
+
 # Create your models here.
 
 class Medico(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
     cpf = models.CharField(max_length=14)
 
-    trabalha_com_aftas = models.BooleanField(default=False)
-    trabalha_com_hipersensibilidade = models.BooleanField(default=False)
-    trabalha_com_lesoes = models.BooleanField(default=False)
-    trabalha_com_pos_cirurgia = models.BooleanField(default=False)
-    trabalha_com_nevralgia = models.BooleanField(default=False)
-    trabalha_com_consulta = models.BooleanField(default=False)
+    aftas = models.BooleanField(default=False)
+    hipersensibilidade = models.BooleanField(default=False)
+    lesoes = models.BooleanField(default=False)
+    pos_cirurgia = models.BooleanField(default=False)
+    nevralgia = models.BooleanField(default=False)
+    consulta = models.BooleanField(default=False)
 
     trabalha_segunda = models.BooleanField(default=True) # 0
     trabalha_terca = models.BooleanField(default=True) # 1
@@ -25,24 +28,24 @@ class Medico(models.Model):
     trabalha_sabado = models.BooleanField(default=False) # 5
 
     @property
-    def nome(self):
-        return f'{self.user.first_name} {self.user.last_name}'
+    def nome_completo(self):
+        return f'{self.first_name} {self.last_name}'
 
     @property
     def especialidades(self):
         esp = []
-        if self.trabalha_com_aftas:
-            esp.append('aftas')
-        if self.trabalha_com_consulta:
-            esp.append('consultas')
-        if self.trabalha_com_hipersensibilidade:
-            esp.append('hipersensibilidade')
-        if self.trabalha_com_lesoes:
-            esp.append('lesoes')
-        if self.trabalha_com_nevralgia:
-            esp.append('nevralgias')
-        if self.trabalha_com_pos_cirurgia:
-            esp.append('pos-cirurgias')
+        if self.aftas:
+            esp.append('Aftas')
+        if self.consulta:
+            esp.append('Consultas')
+        if self.hipersensibilidade:
+            esp.append('Hipersensibilidade')
+        if self.lesoes:
+            esp.append('Lesões')
+        if self.nevralgia:
+            esp.append('Nevralgias')
+        if self.pos_cirurgia:
+            esp.append('Pós-Cirurgias')
         return esp
     
     @property
@@ -80,14 +83,12 @@ class Medico(models.Model):
         return dias
 
     def __str__(self):
-        return f'{self.user.first_name} {self.user.last_name}'
+        return f'{self.first_name} {self.last_name}'
     
     def clean(self):
         checar_cpf_valido(self.cpf)
 
     def full_clean(self, *args, **kwargs):
-        # Modify the fields before validation
-        self.nome = self.nome.strip()
         self.cpf = self.cpf.replace('-', '').replace('.', '').strip()
 
         super(Medico, self).full_clean(*args, **kwargs) # chama full_clean antes de chamar clean
