@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from components.helpers.checar_feriado import checar_feriado
 
-def disponibilidade_data(ano, mes, dia, objeto):
+def disponibilidade_data(ano, mes, dia, hora, minuto, objeto):
     data = datetime(ano, mes, dia)
     umano = datetime.now() + timedelta(days=365)
 
@@ -15,7 +15,7 @@ def disponibilidade_data(ano, mes, dia, objeto):
         return f'Uma das consultas cairia num domingo.\nConsulta do dia {dia}/{mes}/{ano}'
     
     for c in objeto: # se tiver alguma consulta no dia
-        if dia == c['data']['dia'] and mes == c['data']['mes'] and ano == c['data']['ano']:
-            return f'Já existem consultas marcadas para o dia {dia}/{mes}/{ano}'
+        if dia == c['data']['dia'] and mes == c['data']['mes'] and ano == c['data']['ano'] and hora == c['data']['hora'] and minuto == c['data']['minuto']:
+            return f'Já existe(m) consulta(s) marcada(s) para o dia {dia}/{mes}/{ano} às {hora}:{minuto}'
     
     return 'ok'

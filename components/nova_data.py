@@ -1,4 +1,5 @@
 from components.helpers.validacao_data import validacao_data
+from components.helpers.validacao_hora import validacao_hora
 from components.classes.data import Data
 
 def nova_data():
@@ -33,4 +34,6 @@ def nova_data():
 
         ano, mes, dia = validacao_data()
 
-    return Data(dia, mes, ano)
+    hora, minuto = validacao_hora()
+
+    return Data(dia, mes, ano, hora, minuto)

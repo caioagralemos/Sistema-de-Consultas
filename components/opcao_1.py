@@ -4,6 +4,8 @@ def opcao1(consultaBase, objeto):
     meuDia = consultaBase['data']['dia']
     meuMes = consultaBase['data']['mes']
     meuAno = consultaBase['data']['ano']
+    hora = consultaBase['data']['hora']
+    minuto = consultaBase['data']['minuto']
     mesesAdicionados = 0
     anosAdicionados = 0
     diasResetados = 0
@@ -48,9 +50,9 @@ def opcao1(consultaBase, objeto):
             ano = meuAno + anosAdicionados
 
         novoObjeto = consultaBase.copy()
-        novoObjeto['data'] = {'dia': dia, 'mes': mes, 'ano': ano}
+        novoObjeto['data'] = {'dia': dia, 'mes': mes, 'ano': ano, 'hora': hora, 'minuto': minuto}
 
-        dataDisponivel = disponibilidade_data(ano, mes, dia, objeto)
+        dataDisponivel = disponibilidade_data(ano, mes, dia, hora, minuto, objeto)
 
         if dataDisponivel != 'ok':
             return dataDisponivel
