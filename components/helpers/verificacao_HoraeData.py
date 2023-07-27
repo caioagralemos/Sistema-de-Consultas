@@ -1,13 +1,8 @@
 import json
 
-def ler_json(arquivo):
-    with open(arquivo, 'r') as file:
-        data = json.load(file)
-    return data
-
 def comparar_horario(hora, minuto, dia, mes, ano):
     # Lendo o JSON
-    with open('consultas.json', 'r') as file:
+    with open('C:/Users/leand/OneDrive/Documentos/GitHub/Sistema-de-Consultas/data/consultas.json', 'r') as file:
         json_data = json.load(file)
     for item in json_data:
         data = item["data"]
@@ -23,6 +18,7 @@ def comparar_horario(hora, minuto, dia, mes, ano):
             print(f"CPF: {item['cpf']}")
             return False
     return True
+
 # Solicitando a entrada do usuário
 '''dia_usuario = int(input("Insira o dia: "))
 mes_usuario = int(input("Insira o mês: "))

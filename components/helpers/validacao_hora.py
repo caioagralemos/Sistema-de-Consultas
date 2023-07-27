@@ -1,6 +1,6 @@
 from components.helpers.verificacao_HoraeData import comparar_horario
 
-def validacao_hora():
+def validacao_hora(dia, mes, ano):
     while True:
         op = int(input('Diga o período para sua consulta:\n1 para manhã\n2 para tarde\n'))
         if op == 1:
@@ -27,7 +27,7 @@ def validacao_hora():
             else:
                 print('Minuto inválido!')
         
-        if comparar_horario:
+        if comparar_horario(hora, minuto, dia, mes, ano):
             break
         else:
             print('Horário indisponível!\nDigite um outro horário!\n')

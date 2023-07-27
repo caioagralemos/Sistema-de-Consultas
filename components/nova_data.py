@@ -34,6 +34,6 @@ def nova_data():
 
         ano, mes, dia = validacao_data()
 
-    hora, minuto = validacao_hora()
+    hora, minuto = validacao_hora(dia, mes, ano)
 
     return Data(dia, mes, ano, hora, minuto)
