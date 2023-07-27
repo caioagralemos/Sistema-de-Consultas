@@ -23,7 +23,7 @@ def nova_consulta():
             print('CPF inválido!')
             cpf=input('Diga seu CPF: ').replace('-', '').replace('.', '').strip()
 
-    ok=input(f'\n\nDados de sua consulta:\nPaciente: {nome}\nCPF {cpf}\nConsulta agendada em: {data.dia}/{data.mes}/{data.ano}\n\nDigite OK para confirmar: ').lower()
+    ok=input(f'\n\nDados de sua consulta:\nPaciente: {nome}\nCPF {cpf}\nConsulta agendada em: {data.dia}/{data.mes}/{data.ano} {data.hora}:{data.minuto}\n\nDigite OK para confirmar: ').lower()
 
     if ok == 'ok': 
         return Consulta(nome, cpf, data)
