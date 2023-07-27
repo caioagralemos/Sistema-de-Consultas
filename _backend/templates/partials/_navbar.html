@@ -53,7 +53,7 @@
           {% if user.paciente %}
           aria-current="page" href="{% url 'dashboard' %}">Meus Dados ({{user.first_name}})</a>
           {% else %}
-          aria-current="page" href="{% url 'medico-dashboard' %}">Meus Dados ({{user.medico}})</a>
+          aria-current="page" href="{% url 'medico-dashboard' %}">Meus Dados ({{user.medico.first_name}})</a>
           {% endif %}
           <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}">
             <i class="fas fa-sign-out-alt"></i> Sair

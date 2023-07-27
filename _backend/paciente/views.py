@@ -79,6 +79,7 @@ def register(request):
             # Criando o perfil estendido vinculado ao usuário
             paciente = Paciente.objects.create(user=user, cpf=cpf, aftas=aftas, hipersensibilidade=hipersensibilidade, consulta=consulta, lesoes=lesoes, nevralgia=nevralgia, pos_cirurgia=pos_cirurgia)
             paciente.save()
+            messages.success(request, f'Conta de {first_name} criada com sucesso!')
             return redirect('login')
     else:
         return render(request, 'paciente/register.html')   
@@ -100,7 +101,7 @@ def login(request):
             auth.login(request, user)
             try:
                 if user.medico:
-                    messages.success(request, f'Bem vindo(a), {user.first_name}')
+                    messages.success(request, f'Bem vindo(a), Dr(a). {user.medico.first_name}')
                     return redirect('medico-dashboard')
             except:
                 messages.success(request, f'Bem vindo(a), {user.first_name}')
