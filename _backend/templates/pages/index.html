@@ -32,7 +32,20 @@
             atual direção tem trabalhado cada vez mais pela excelência no atendimento aos que dependem dos serviços
             oferecidos no hospital.</p>
 
-        <a href='{% url 'agendarconsulta' %}' class="mt-2 btn btn-primary btn-lg p-2 mx-auto">Marcar Consulta</a>
+        <div class="btn-group">
+            <button class="mt-2 btn btn-primary btn-lg p-2 mx-auto dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Marcar Tratamento
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'agendarconsulta' %}">Consulta</a></li>
+                <li><a class="dropdown-item" href="{% url 'aftas' %}">Aftas</a></li>
+                <li><a class="dropdown-item" href="{% url 'lesoes' %}">Lesões</a></li>
+                <li><a class="dropdown-item" href="{% url 'pos_cirurgia' %}">Pós-Cirurgia</a></li>
+                <li><a class="dropdown-item" href="{% url 'nevralgia' %}">Nevralgia</a></li>
+                <li><a class="dropdown-item" href="{% url 'hipersensibilidade' %}">Hipersensibilidade</a></li>
+              </ul>
+          </div>
+          
     </div>
 </div>
 

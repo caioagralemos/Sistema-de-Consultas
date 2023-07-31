@@ -2,7 +2,7 @@
 {% block content %}
 <div>
     <img src="https://res.cloudinary.com/dozecv3ef/image/upload/v1689361207/pic_mwlqif.jpg" class="card-img-top mt-0">
-    <h1 class="text-center pt-3 text-primary-emphasis pb-2">Marque sua Consulta</h1>
+    <h1 class="text-center pt-3 text-primary-emphasis pb-2">Marque seu tratamento para Nevralgia</h1>
 
     {% if user.is_authenticated %}
     <form class="text-center mt-2 m-5" action="{% url 'agendarconsulta' %}" method='POST'>
@@ -19,6 +19,8 @@
       </div>
 
       <div class="input-group mb-3">
+        <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
+        <input required type="date" class="form-control" placeholder="Server" aria-label="Server" name='data'>
           <span class="input-group-text"><i class="uil uil-clock"></i></span>
           <select class="form-select" id="horario" name='horario'>
             <option selected>Escolha o horário</option>
@@ -45,9 +47,6 @@
             <option value="1930">19:30</option>
             <option value="2000">20:00</option>
             </select>
-
-          <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
-          <input required type="date" class="form-control" placeholder="Server" aria-label="Server" name='data'>
         </div>
         
       <button class="btn btn-lg btn-light border-primary text-primary-emphasis mt-3">Enviar</button>

@@ -2,7 +2,7 @@
 {% block content %}
 <div>
     <img src="https://res.cloudinary.com/dozecv3ef/image/upload/v1689361207/pic_mwlqif.jpg" class="card-img-top mt-0">
-    <h1 class="text-center pt-3 text-primary-emphasis">{{request.path}}</h1>
+    <h1 class="text-center pt-3 text-primary-emphasis pb-2">Marque seu tratamento para Aftas</h1>
 
     {% if user.is_authenticated %}
     <form class="text-center mt-2 m-5" action="{% url 'agendarconsulta' %}" method='POST'>
