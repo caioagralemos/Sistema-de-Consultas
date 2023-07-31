@@ -7,7 +7,7 @@ from consultas.models import Consulta
 
 def dashboard(request):
     context = {
-        'consultas': Consulta.objects.all(),
+        'consultas': Consulta.objects.all().filter(medico=request.user.medico),
     }
     return render(request, 'medico/dashboard.html', context)
 

@@ -1,28 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
-{% if user.medico %}
-<div class='px-5 py-2'>
-<h1 class='ms-2'><i class="uil uil-medkit"></i> Consultas de Dr(a). {{user.medico.nome_completo}}</h1>
-<div style='margin:4px, 4px;
-padding:4px;
-height: 600px;
-overflow-x: hidden;
-overflow-y: auto;
-text-align:justify;'>
-{% for consulta in consultas %}
-{% if consulta.medico.user.username == user.username %}
-    <div class="card m-2">
-        <div class="card-body">
-          <h5 class="card-title">{{consulta.paciente}}</h5>
-          <h6 class="card-subtitle mb-2 text-body-secondary">{{consulta.data}}</h6>
-          <p class="card-text">Serviço - {{consulta.servico|capfirst}}</p>
+  {% if user.medico %}
+    <div class='px-5 py-2'>
+      <h1 class='ms-2'><i class="uil uil-medkit"></i> Consultas para {{ user.medico.nome_completo }}</h1>
+      {% if consultas %}
+        <div style='margin:4px, 4px;
+        padding:4px;
+        height: 600px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align:justify;'>
+          {% for consulta in consultas %}
+            {% if consulta.medico.user.username == user.username %}
+              <div class="card m-2">
+                <div class="card-body">
+                  <h5 class="card-title">{{ consulta.paciente }}</h5>
+                  <h6 class="card-subtitle mb-2 text-body-secondary">{{ consulta.data }}</h6>
+                  <p class="card-text">Serviço - {{ consulta.servico|capfirst }}</p>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
         </div>
+      {% else %}
+        <p>Nenhuma consulta disponível.</p>
+      {% endif %}
     </div>
-    {% endif %}
-{% endfor %}
-</div>
-</div>
-{% else %}
-<h1 class='p-5 text-center'>404 not found</h1>
-{% endif %}
+  {% else %}
+    <h1 class='p-5 text-center'>404 not found</h1>
+  {% endif %}
 {% endblock %}

@@ -2,6 +2,7 @@ from django.db import models
 from paciente.helpers.checar_cpf_valido import checar_cpf_valido
 from paciente.helpers.checar_nome_valido import checar_nome_valido
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 
@@ -44,6 +45,9 @@ class Paciente(models.Model):
     def clean(self):
         checar_nome_valido(self.nome)
         checar_cpf_valido(self.cpf)
+
+        if Paciente.objects.exclude(pk=self.pk).filter(cpf=self.cpf).exists():
+            raise ValidationError('Já existe um cadastro com este CPF.')
 
     def full_clean(self, *args, **kwargs):
         # Modify the fields before validation

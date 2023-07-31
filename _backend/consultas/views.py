@@ -8,14 +8,9 @@ from consultas.models import Consulta
 
 # Create your views here.
 
-def agendar_consulta(request):
+def consulta(request):
     if request.method == 'POST':
         paciente = request.user.paciente
-
-        servico = request.POST['servico']
-        if servico == 'Escolha seu serviço':
-            messages.error(request, 'Você não escolheu o seu serviço!')
-            return redirect('agendarconsulta')
         
         medico_user = request.POST['medico']
         if medico_user == 'Escolha seu médico':
@@ -43,20 +38,47 @@ def agendar_consulta(request):
             return redirect('agendarconsulta')
         
         try:
-            consulta = Consulta.objects.create(paciente=paciente, servico=servico, medico=medico, data=data)
+            consulta = Consulta.objects.create(paciente=paciente, servico='consulta', medico=medico, data=data)
             consulta.save()
         except:
             messages.error(request, 'Algo deu errado :/ Tente novamente')
             return redirect('agendarconsulta')
         
 
-        messages.success(request, f'{paciente} com {medico.nome_completo} para tratar {servico} - dia {dia}/{mes}/{ano}')
+        messages.success(request, f'Consulta: {paciente} com {medico.nome_completo} - dia {dia}/{mes}/{ano}')
         return redirect('dashboard')
     else:
         context = {
-            'medicos': Medico.objects.all(),
+            'medicos': Medico.objects.all().filter(consulta=True),
         }
         return render(request, 'consultas/marcar_consulta.html', context)
 
-def confirmacao(request):
-    return render(request, 'consultas/confirmacao.html')
+def aftas(request):
+    context = {
+            'medicos': Medico.objects.all().filter(aftas=True),
+        }
+    return render(request, 'consultas/teste.html', context)
+
+def hipersensibilidade(request):
+    context = {
+            'medicos': Medico.objects.all().filter(hipersensibilidade=True),
+        }
+    return render(request, 'consultas/teste.html', context)
+
+def pos_cirurgia(request):
+    context = {
+        'medicos': Medico.objects.all().filter(pos_cirurgia=True),
+        }
+    return render(request, 'consultas/teste.html', context)
+
+def nevralgia(request):
+    context = {
+        'medicos': Medico.objects.all().filter(nevralgia=True),
+    }
+    return render(request, 'consultas/teste.html', context)
+
+def lesoes(request):
+    context = {
+        'medicos': Medico.objects.all().filter(lesoes=True),
+    }
+    return render(request, 'consultas/teste.html', context)

@@ -34,13 +34,21 @@
           class="nav-link"
           {% endif %}
           href="{% url 'about' %}">O Hospital</a>
-          <a
-          {% if 'agendarconsulta' in request.path %}
-          class="nav-link active"
-          {% else %}
-          class="nav-link"
-          {% endif %}
-          href="{% url 'agendarconsulta' %}">Marcar Data</a>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Marcar Tratamento
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'agendarconsulta' %}">Consulta</a></li>
+              <li><a class="dropdown-item" href="{% url 'aftas' %}">Aftas</a></li>
+              <li><a class="dropdown-item" href="{% url 'lesoes' %}">Lesões</a></li>
+              <li><a class="dropdown-item" href="{% url 'pos_cirurgia' %}">Pós-Cirurgia</a></li>
+              <li><a class="dropdown-item" href="{% url 'nevralgia' %}">Nevralgia</a></li>
+              <li><a class="dropdown-item" href="{% url 'hipersensibilidade' %}">Hipersensibilidade</a></li>
+            </ul>
+          </li>
+  
         </div>
         <div class="navbar-nav ms-auto">
           {% if user.is_authenticated %}
