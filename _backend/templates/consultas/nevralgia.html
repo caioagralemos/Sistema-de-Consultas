@@ -5,6 +5,7 @@
     <h1 class="text-center pt-3 text-primary-emphasis pb-2">Marque seu tratamento para Nevralgia</h1>
 
     {% if user.is_authenticated %}
+      {% if user.paciente.nevralgia %}
     <form class="text-center mt-2 m-5" action="{% url 'agendarconsulta' %}" method='POST'>
       {% csrf_token %}
 
@@ -51,6 +52,12 @@
         
       <button class="btn btn-lg btn-light border-primary text-primary-emphasis mt-3">Enviar</button>
     </form>
+
+      {% else %}
+      
+      <h1 class='p-4 text-center'>Você não está habilitado para marcar tratamento para Nevralgia.<br>Caso precise, peça ao seu médico para alterar seu prontuário.</h1>
+
+      {% endif %}
 
     {% else %}
 
