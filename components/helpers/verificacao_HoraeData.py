@@ -17,6 +17,7 @@ def comparar_horario(hora, minuto, dia, mes, ano):
         dia_json = data["dia"]
         mes_json = data["mes"]
         ano_json = data["ano"]
+
         for i in range(len(hora)):
             for j in range(len(hora_json)):
                 if hora[i] == hora_json[j] and minuto[i] == minuto_json[j] and dia == dia_json and mes == mes_json and ano == ano_json:

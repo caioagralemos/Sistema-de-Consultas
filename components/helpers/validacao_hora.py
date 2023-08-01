@@ -3,19 +3,20 @@ from components.helpers.verificacao_HoraeData import comparar_horario
 def validacao_hora(dia, mes, ano):
     hora = [0]
     minuto = [0]
+    cont = 0
     while True:
         op = int(input('Diga o período para sua consulta:\n1 para manhã\n2 para tarde\n'))
         if op == 1:
             while True:
                 hora[0] = int(input('Diga a hora para sua consulta: '))
-                if hora[0] > 5 and hora[0] < 13:
+                if hora[0] >= 8 and hora[0] <= 12:
                     break
                 else:
                     print('Hora inválida!')
         else:
             while True:
                 hora[0] = int(input('Diga a hora para sua consulta: '))
-                if hora[0] > 14 and hora[0] < 20:
+                if hora[0] >= 14 and hora[0] <= 20:
                     break
                 else:
                     print('Hora inválida!')
@@ -33,6 +34,10 @@ def validacao_hora(dia, mes, ano):
             break
         else:
             print('Horário indisponível!\nDigite um outro horário!\n')
+            cont += 1
 
+        if cont == 3:
+            print('Você excedeu o número de tentativas! Você receberá o horário mais próximo de se marcar!\n')
+            return 'erro', 'erro'
 
     return hora, minuto
