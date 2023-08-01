@@ -22,6 +22,7 @@ def marcarConsulta():
     with open('./data/consultas.json', 'r') as arquivo:
         objeto_python = json.load(arquivo)
 
+    #'\nEscolha o problemaque você tem:\n1 para Aftas\n2 para hipersensiblidade\n3 para lesões\n4 para pós-cirúrgia\n5 para nevralgia\n6 para consulta\n'
     opcao = int(input('\nEscolha o método de seu tratamento:\n1 para a opção de uma sessão por semana - (5 semanas)\n2 para a opção de uma sessão por mês - (5 meses)\n'))
     while True:
         if opcao != 1 and opcao != 2:
