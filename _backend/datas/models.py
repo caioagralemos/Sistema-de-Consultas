@@ -11,7 +11,7 @@ def validar_ano(ano):
 
 def validar_mes(ano, mes):
     if ano == datetime.now().year and mes < datetime.now().month:
-            raise ValidationError('Mes inválido. Esse mes já passou.')
+            raise ValidationError('Mes inválido. Esse mês já passou.')
     elif mes < 1 or mes > 12:
             raise ValidationError('Mes inválido.')
 
@@ -21,6 +21,9 @@ def validar_dia(ano, mes, dia):
     
         if ano == datetime.now().year and mes == datetime.now().month and dia < datetime.now().day:
             raise ValidationError('Dia inválido. Esse dia já passou.')
+        
+        if ano == datetime.now().year and mes == datetime.now().month and dia == datetime.now().day:
+            raise ValidationError('Não é possível marcar consultas para o mesmo dia.')
         
         if mes == 2:
             if ano % 4 == 0:

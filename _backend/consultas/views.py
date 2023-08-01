@@ -32,6 +32,7 @@ def consulta(request):
 
         try:
             nova_data = Data.objects.create(ano=ano, mes=mes, dia=dia, hora=hora, minuto=minuto)
+            nova_data.clean()
             nova_data.save()
         except ValidationError as e:
             error_messages = ', '.join(e.messages)
@@ -82,6 +83,7 @@ def aftas(request):
 
         try:
             nova_data = Data.objects.create(ano=ano, mes=mes, dia=dia, hora=hora, minuto=minuto)
+            nova_data.clean()
             nova_data.save()
         except ValidationError as e:
             error_messages = ', '.join(e.messages)
@@ -132,6 +134,7 @@ def hipersensibilidade(request):
 
         try:
             nova_data = Data.objects.create(ano=ano, mes=mes, dia=dia, hora=hora, minuto=minuto)
+            nova_data.clean()
             nova_data.save()
         except ValidationError as e:
             error_messages = ', '.join(e.messages)
@@ -182,6 +185,7 @@ def pos_cirurgia(request):
 
         try:
             nova_data = Data.objects.create(ano=ano, mes=mes, dia=dia, hora=hora, minuto=minuto)
+            nova_data.clean()
             nova_data.save()
         except ValidationError as e:
             error_messages = ', '.join(e.messages)
@@ -232,6 +236,7 @@ def nevralgia(request):
 
         try:
             nova_data = Data.objects.create(ano=ano, mes=mes, dia=dia, hora=hora, minuto=minuto)
+            nova_data.clean()
             nova_data.save()
         except ValidationError as e:
             error_messages = ', '.join(e.messages)
@@ -282,6 +287,7 @@ def lesoes(request):
 
         try:
             nova_data = Data.objects.create(ano=ano, mes=mes, dia=dia, hora=hora, minuto=minuto)
+            nova_data.clean()
             nova_data.save()
         except ValidationError as e:
             error_messages = ', '.join(e.messages)
