@@ -89,7 +89,7 @@ class Medico(models.Model):
     
     def clean(self):
         checar_cpf_valido(self.cpf)
-        if Paciente.objects.exclude(pk=self.pk).filter(cpf=self.cpf).exists() or Medico.objects.filter(cpf=self.cpf).exists():
+        if Paciente.objects.filter(cpf=self.cpf).exists() or Medico.objects.exclude(pk=self.pk).filter(cpf=self.cpf).exists():
             raise ValidationError('Já existe um cadastro com este CPF.')
 
     def full_clean(self, *args, **kwargs):

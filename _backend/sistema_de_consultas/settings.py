@@ -82,10 +82,10 @@ WSGI_APPLICATION = 'sistema_de_consultas.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'projeto',
-        'USER': 'postgres',
-        'PASSWORD': '8501',
-        'HOST': 'localhost',
+        'NAME': 'mydjango1',
+        'USER': 'mydjango1',
+        'PASSWORD': '150803',
+        'HOST': 'pgsql.mydjango.kinghost.net',
     }
 }
 

@@ -51,9 +51,18 @@ class Data(models.Model):
     dia = models.IntegerField()
     mes = models.IntegerField()
     ano = models.IntegerField()
+    hora = models.IntegerField()
+    minuto = models.IntegerField()
 
     def __str__(self):
-        return f'{self.dia}/{self.mes}/{self.ano}'
+        if self.hora < 10 and self.minuto == 0:
+            return f'{self.dia}/{self.mes}/{self.ano} 0{self.hora}:0{self.minuto}'
+        elif self.hora < 10 and self.minuto == 30:
+            return f'{self.dia}/{self.mes}/{self.ano} 0{self.hora}:{self.minuto}'
+        elif self.hora > 10 and self.minuto == 0:
+            return f'{self.dia}/{self.mes}/{self.ano} {self.hora}:0{self.minuto}'
+        else:
+            return f'{self.dia}/{self.mes}/{self.ano} {self.hora}:{self.minuto}'
     
     def clean(self): # o mêtodo clean faz todas as verificações
         validar_ano(self.ano)
