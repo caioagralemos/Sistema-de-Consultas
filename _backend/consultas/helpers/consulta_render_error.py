@@ -3,9 +3,9 @@ from medico.models import Medico
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-def consulta_render_error(request, message, medico_user='', data='', horario=''):
+def consulta_render_error(request, message, medico, data='', horario=''):
     context = {
-        'medico': medico_user,
+        'medico_escolhido': medico,
         'horarios': time_choices,
         'medicos': Medico.objects.all().filter(consulta=True),
         'data': data,

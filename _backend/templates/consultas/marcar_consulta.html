@@ -14,7 +14,7 @@
           <select required class="form-select" id="medico" name='medico'>
           <option selected>Escolha seu médico</option>
             {% for medico in medicos %}
-            <option value="{{medico.user.username}}" {% if medico == medico %}selected{% endif %}>{{medico}}</option>
+            <option value="{{medico.user.username}}" {% if medico == medico_escolhido %}selected{% endif %}>{{medico}}</option>
             {%endfor%}
           </select>
         </div>

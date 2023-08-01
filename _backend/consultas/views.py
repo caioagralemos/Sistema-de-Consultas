@@ -6,9 +6,11 @@ from medico.models import Medico
 from datas.models import Data
 from consultas.models import Consulta
 
-from consultas.helpers.check_future import check_future
-from consultas.helpers.consulta_render_error import consulta_render_error
 from .choices import time_choices
+from consultas.helpers.check_future import check_future
+
+from consultas.helpers.consulta_render_error import consulta_render_error
+from consultas.helpers.aftas_render_error import aftas_render_error
 
 # Create your views here.
 
@@ -29,7 +31,7 @@ def consulta(request):
 
         horario = request.POST['horario']
         if horario == 'Escolha o horário':
-            return consulta_render_error(request, 'Você não escolheu seu horário!', medico_user, data, horario)
+            return consulta_render_error(request, 'Você não escolheu seu horário!', medico, data, horario)
         hora = int(horario[0:2])
         minuto = int(horario[2:])
 
@@ -39,17 +41,17 @@ def consulta(request):
             nova_data.save()
         except ValidationError as e:
             error_messages = ', '.join(e.messages)
-            return consulta_render_error(request, error_messages, medico_user, data, horario)
+            return consulta_render_error(request, error_messages, medico, data, horario)
         
         if Consulta.objects.all().filter(medico=medico, data__dia=dia, data__mes=mes, data__ano=ano, data__hora=hora, data__minuto=minuto).exists():
             message = f'Data inválida: {nova_data}, esse médico já tem compromisso para esse horário.'
-            return consulta_render_error(request, message, medico_user, data, horario)
+            return consulta_render_error(request, message, medico, data, horario)
         
         try:
             consulta = Consulta.objects.create(paciente=paciente, servico='consulta', medico=medico, data=nova_data)
             consulta.save()
         except:
-            consulta_render_error(request, 'Algo deu errado :/ Tente novamente', medico_user, data, horario)
+            consulta_render_error(request, 'Algo deu errado :/ Tente novamente', medico, data, horario)
         
 
         messages.success(request, f'Consulta: {paciente} com {medico.nome_completo} - dia {dia}/{mes}/{ano} às {hora}:{minuto}')
@@ -66,9 +68,6 @@ def aftas(request):
         paciente = request.user.paciente
         
         medico_user = request.POST['medico']
-        if medico_user == 'Escolha seu médico':
-            messages.error(request, 'Você não escolheu o seu médico!')
-            return redirect('aftas')
         medico = Medico.objects.get(user__username=medico_user)
         
         data_1 = request.POST['data1']
@@ -79,7 +78,7 @@ def aftas(request):
         hora_1 = int(horario_1[0:2])
         minuto_1 = int(horario_1[2:])
 
-        data_2 = request.POST['data1']
+        data_2 = request.POST['data2']
         ano_2 = int(data_2[0:4])
         mes_2 = int(data_2[5:7])
         dia_2 = int(data_2[8:])
@@ -87,37 +86,36 @@ def aftas(request):
         hora_2 = int(horario_2[0:2])
         minuto_2 = int(horario_2[2:])
 
-        data_3 = request.POST['data1']
+        data_3 = request.POST['data3']
         ano_3 = int(data_3[0:4])
         mes_3 = int(data_3[5:7])
         dia_3 = int(data_3[8:])
-        horario_3 = request.POST['horario2']
+        horario_3 = request.POST['horario3']
         hora_3 = int(horario_3[0:2])
         minuto_3 = int(horario_3[2:])
 
-        data_4 = request.POST['data1']
+        data_4 = request.POST['data4']
         ano_4 = int(data_4[0:4])
         mes_4 = int(data_4[5:7])
         dia_4 = int(data_4[8:])
-        horario_4 = request.POST['horario2']
+        horario_4 = request.POST['horario4']
         hora_4 = int(horario_4[0:2])
         minuto_4 = int(horario_4[2:])
 
+        if medico_user == 'Escolha seu médico':
+            return aftas_render_error(request, 'Você não escolheu seu horário!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
+
         if horario_1 == 'Escolha o horário':
-            messages.error(request, 'Você não escolheu seu horário!')
-            return redirect('aftas')
+            return aftas_render_error(request, 'Você não escolheu seu horário!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
         
         if horario_2 == 'Escolha o horário':
-            messages.error(request, 'Você não escolheu seu horário!')
-            return redirect('aftas')
+            return aftas_render_error(request, 'Você não escolheu seu horário!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
 
         if horario_3 == 'Escolha o horário':
-            messages.error(request, 'Você não escolheu seu horário!')
-            return redirect('aftas')
+            return aftas_render_error(request, 'Você não escolheu seu horário!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
         
         if horario_4 == 'Escolha o horário':
-            messages.error(request, 'Você não escolheu seu horário!')
-            return redirect('aftas')        
+            return aftas_render_error(request, 'Você não escolheu seu horário!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)       
         
         try:
             nova_data_1 = Data.objects.create(ano=ano_1, mes=mes_1, dia=dia_1, hora=hora_1, minuto=minuto_1)
@@ -125,8 +123,7 @@ def aftas(request):
             nova_data_1.save()
         except ValidationError as e:
             error_messages = ', '.join(e.messages)
-            messages.error(request, f'Data inválida: {error_messages}')
-            return redirect('aftas')
+            return aftas_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
 
         try:
             nova_data_2 = Data.objects.create(ano=ano_2, mes=mes_2, dia=dia_2, hora=hora_2, minuto=minuto_2)
@@ -134,8 +131,7 @@ def aftas(request):
             nova_data_2.save()
         except ValidationError as e:
             error_messages = ', '.join(e.messages)
-            messages.error(request, f'Data inválida: {error_messages}')
-            return redirect('aftas')
+            return aftas_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
 
         try:
             nova_data_3 = Data.objects.create(ano=ano_3, mes=mes_3, dia=dia_3, hora=hora_3, minuto=minuto_3)
@@ -143,8 +139,7 @@ def aftas(request):
             nova_data_3.save()
         except ValidationError as e:
             error_messages = ', '.join(e.messages)
-            messages.error(request, f'Data inválida: {error_messages}')
-            return redirect('aftas')
+            return aftas_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
 
         try:
             nova_data_4 = Data.objects.create(ano=ano_4, mes=mes_4, dia=dia_4, hora=hora_4, minuto=minuto_4)
@@ -152,34 +147,30 @@ def aftas(request):
             nova_data_4.save()
         except ValidationError as e:
             error_messages = ', '.join(e.messages)
-            messages.error(request, f'Data inválida: {error_messages}')
-            return redirect('aftas')
+            return aftas_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
         
-        if check_future(nova_data_1, nova_data_2) not in range(4,9):
-            messages.error(request, 'A diferença entre as sessões precisa ser entre 4 a 8 dias. Cheque a diferença entre as sessões 1 e 2.')
-            return redirect('aftas')        
+        if check_future(nova_data_1, nova_data_2) not in range(4,9):      
+            return aftas_render_error(request, 'A diferença entre as sessões precisa ser entre 4 a 8 dias. Cheque a diferença entre as sessões 1 e 2.', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
         elif check_future(nova_data_2, nova_data_3) not in range(4,9):
-            messages.error(request, 'A diferença entre as sessões precisa ser entre 4 a 8 dias. Cheque a diferença entre as sessões 2 e 3.')
-            return redirect('aftas')        
+            return aftas_render_error(request, 'A diferença entre as sessões precisa ser entre 4 a 8 dias. Cheque a diferença entre as sessões 2 e 3.', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)    
         elif check_future(nova_data_3, nova_data_4) not in range(4,9):
-            messages.error(request, 'A diferença entre as sessões precisa ser entre 4 a 8 dias. Cheque a diferença entre as sessões 3 e 4.')
-            return redirect('aftas')
+            return aftas_render_error(request, 'A diferença entre as sessões precisa ser entre 4 a 8 dias. Cheque a diferença entre as sessões 3 e 4.', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
 
         if Consulta.objects.filter(medico=medico, data__dia=dia_1, data__mes=mes_1, data__ano=ano_1, data__hora=hora_1, data__minuto=minuto_1).exists():
-            messages.error(request, f'Data 1 inválida: {nova_data_1}, esse médico já tem compromisso para esse horário.')
-            return redirect('aftas')
+            error_messages = f'Data 1 inválida: {nova_data_1}, esse médico já tem compromisso para esse horário.'
+            return aftas_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
         
         if Consulta.objects.filter(medico=medico, data__dia=dia_2, data__mes=mes_2, data__ano=ano_2, data__hora=hora_2, data__minuto=minuto_2).exists():
-            messages.error(request, f'Data 2 inválida: {nova_data_2}, esse médico já tem compromisso para esse horário.')
-            return redirect('aftas')
+            error_messages = f'Data 2 inválida: {nova_data_2}, esse médico já tem compromisso para esse horário.'
+            return aftas_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
         
         if Consulta.objects.filter(medico=medico, data__dia=dia_3, data__mes=mes_3, data__ano=ano_3, data__hora=hora_3, data__minuto=minuto_3).exists():
-            messages.error(request, f'Data 3 inválida: {nova_data_3}, esse médico já tem compromisso para esse horário.')
-            return redirect('aftas')
+            error_messages = f'Data 3 inválida: {nova_data_3}, esse médico já tem compromisso para esse horário.'
+            return aftas_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
         
         if Consulta.objects.filter(medico=medico, data__dia=dia_4, data__mes=mes_4, data__ano=ano_4, data__hora=hora_4, data__minuto=minuto_4).exists():
-            messages.error(request, f'Data 4 inválida: {nova_data_4}, esse médico já tem compromisso para esse horário.')
-            return redirect('aftas')
+            error_messages = f'Data 4 inválida: {nova_data_4}, esse médico já tem compromisso para esse horário.'
+            return aftas_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
         
         try:
             consulta = Consulta.objects.create(paciente=paciente, servico='aftas', medico=medico, data=nova_data_1)
@@ -191,8 +182,8 @@ def aftas(request):
             consulta4 = Consulta.objects.create(paciente=paciente, servico='aftas', medico=medico, data=nova_data_4)
             consulta4.save()
         except:
-            messages.error(request, 'Algo deu errado :/ Tente novamente')
-            return redirect('aftas')
+            error_messages = 'Algo deu errado :/ Tente novamente'
+            return aftas_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
         
         messages.success(request, f'Tratamento de Aftas: {paciente} com {medico.nome_completo} - Marcado com sucesso')
         return redirect('dashboard')
