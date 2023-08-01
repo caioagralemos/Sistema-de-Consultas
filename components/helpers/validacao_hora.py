@@ -5,25 +5,28 @@ def validacao_hora(dia, mes, ano):
         op = int(input('Diga o período para sua consulta:\n1 para manhã\n2 para tarde\n'))
         if op == 1:
             while True:
-                hora = int(input('Diga a hora para sua consulta: '))
-                if hora > 5 and hora < 13:
+                hora = []
+                hora.append(int(input('Diga a hora para sua consulta: ')))
+                if hora[0] > 5 and hora[0] < 13:
                     break
                 else:
                     print('Hora inválida!')
         else:
             while True:
-                hora = int(input('Diga a hora para sua consulta: '))
-                if hora > 13 and hora < 19:
+                hora = []
+                hora.append(int(input('Diga a hora para sua consulta: ')))
+                if hora[0] > 13 and hora[0] < 19:
                     break
                 else:
                     print('Hora inválida!')
 
         while True:
-            minuto = int(input('Diga o minuto para sua consulta: '))
-            if minuto == 0 or minuto == 10 or minuto == 20 or minuto == 30 or minuto == 40 or minuto == 50:
+            minuto = []
+            minuto.append(int(input('Diga o minuto para sua consulta: ')))
+            if minuto[0] == 0 or minuto[0] == 30:
                 break
-            elif minuto >= 0 and minuto <= 59:
-                print('Minuto inválido! As consultas podem ser marcadas apenas em intervalos de 10 minutos! Dessa forma escolha um desses valores 0, 10, 20, 30, 40 ou 50.')
+            elif minuto[0] >= 0 and minuto[0] <= 59:
+                print('Minuto inválido! As consultas podem ser marcadas apenas em intervalos de 30 minutos! Dessa forma escolha um desses valores 0 ou 3.')
             else:
                 print('Minuto inválido!')
         

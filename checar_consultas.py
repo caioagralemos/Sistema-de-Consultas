@@ -48,7 +48,7 @@ if choice == '1':
         print('\nTODAS AS CONSULTAS:')
         for objeto in todas_consultas:
             print(
-                f"\nConsulta nº {i}:\nPaciente: {objeto['nome']}\nCPF: {objeto['cpf']}\nData da consulta: {objeto['data']['dia']}/{objeto['data']['mes']}/{objeto['data']['ano']}")
+                f"\nConsulta nº {i}:\nPaciente: {objeto['nome']}\nCPF: {objeto['cpf']}\nData da consulta: {objeto['data']['dia']}/{objeto['data']['mes']}/{objeto['data']['ano']}\nHorário: {objeto['data']['hora']}:{objeto['data']['minuto']}")
             i = i + 1
 
 if choice == '2':
@@ -65,7 +65,7 @@ if choice == '2':
         print(f'\nCONSULTAS DO DIA:')
         for objeto in consultas_do_dia:
             print(
-                f"\nConsulta nº {i}:\nPaciente: {objeto['nome']}\nCPF: {objeto['cpf']}\nData da consulta: {objeto['data']['dia']}/{objeto['data']['mes']}/{objeto['data']['ano']}")
+                f"\nConsulta nº {i}:\nPaciente: {objeto['nome']}\nCPF: {objeto['cpf']}\nData da consulta: {objeto['data']['dia']}/{objeto['data']['mes']}/{objeto['data']['ano']}\nHorário: {objeto['hora']}:{objeto['minuto']}")
             i = i + 1
 
 if choice == '3':
@@ -82,7 +82,7 @@ if choice == '3':
         print('\nPRÓXIMAS CONSULTAS:')
         for objeto in consultas_futuras:
             print(
-                f"\nConsulta nº {i}:\nPaciente: {objeto['nome']}\nCPF: {objeto['cpf']}\nData da consulta: {objeto['data']['dia']}/{objeto['data']['mes']}/{objeto['data']['ano']}")
+                f"\nConsulta nº {i}:\nPaciente: {objeto['nome']}\nCPF: {objeto['cpf']}\nData da consulta: {objeto['data']['dia']}/{objeto['data']['mes']}/{objeto['data']['ano']}\nHorário: {objeto['hora']}:{objeto['minuto']}")
             i = i + 1
 
 if choice == '4':
@@ -99,5 +99,5 @@ if choice == '4':
         print('\nCONSULTAS PASSADAS:')
         for objeto in consultas_passadas:
             print(
-                f"\nConsulta nº {i}:\nPaciente: {objeto['nome']}\nCPF: {objeto['cpf']}\nData da consulta: {objeto['data']['dia']}/{objeto['data']['mes']}/{objeto['data']['ano']}")
+                f"\nConsulta nº {i}:\nPaciente: {objeto['nome']}\nCPF: {objeto['cpf']}\nData da consulta: {objeto['data']['dia']}/{objeto['data']['mes']}/{objeto['data']['ano']}\nHorário: {objeto['hora']}:{objeto['minuto']}")
             i = i + 1
