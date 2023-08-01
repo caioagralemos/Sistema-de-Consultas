@@ -29,3 +29,10 @@ class Consulta(models.Model):
         choices=OPCOES_CHOICES,
         default=OPCAO_1,  # Valor padrão
     )
+
+    @property
+    def data_hora_completa(self):
+        return [self.data.ano, self.data.mes, self.data.dia, self.data.hora, self.data.minuto]
+    
+    class Meta:
+        ordering = ['data__ano', 'data__mes', 'data__dia', 'data__hora', 'data__minuto']

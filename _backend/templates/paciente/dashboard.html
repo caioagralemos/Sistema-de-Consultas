@@ -10,7 +10,6 @@ overflow-x: hidden;
 overflow-y: auto;
 text-align:justify;'>
 {% for consulta in consultas %}
-    {% if consulta.paciente.user.username == user.username %}
     <div class="card m-2">
         <div class="card-body">
           <h5 class="card-title">{{consulta.medico}}</h5>
@@ -18,7 +17,6 @@ text-align:justify;'>
           <p class="card-text">Serviço - {{consulta.servico|capfirst}}</p>
         </div>
     </div>
-    {% endif %}
 {% endfor %}
 </div>
 </div>

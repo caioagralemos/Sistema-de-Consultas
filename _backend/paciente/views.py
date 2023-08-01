@@ -56,13 +56,13 @@ def register(request):
         if password != password2:
             messages.error(request, 'Senhas diferentes!')
             return redirect('register')
-        elif not User.objects.filter(username=username).exists():
+        elif User.objects.filter(username=username).exists():
             messages.error(request, 'Usuário já registrado!')
             return redirect('register')
-        elif not Paciente.objects.filter(cpf=cpf).exists():
+        elif Paciente.objects.filter(cpf=cpf).exists():
             messages.error(request, 'CPF já registrado!')
             return redirect('register')
-        elif not User.objects.filter(email=email).exists():
+        elif User.objects.filter(email=email).exists():
             messages.error(request, 'Email já registrado!')
             return redirect('register')
         elif checar_nome_valido(nome) is False:
@@ -86,7 +86,7 @@ def register(request):
 
 def dashboard(request):
     context = {
-        'consultas': Consulta.objects.all(),
+        'consultas': Consulta.objects.all().filter(paciente=request.user.paciente),
     }
     return render(request, 'paciente/dashboard.html', context)
 

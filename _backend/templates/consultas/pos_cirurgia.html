@@ -6,7 +6,7 @@
 
     {% if user.is_authenticated %}
       {% if user.paciente.pos_cirurgia %}
-    <form class="text-center mt-2 m-5" action="{% url 'agendarconsulta' %}" method='POST'>
+    <form class="text-center mt-2 m-5" action="{% url 'pos_cirurgia' %}" method='POST'>
       {% csrf_token %}
 
       <div class="input-group mb-3">
@@ -14,7 +14,7 @@
         <select required class="form-select" id="medico" name='medico'>
         <option selected>Escolha seu médico</option>
           {% for medico in medicos %}
-          <option value="{{medico.user.username}}">{{medico}}</option>
+          <option value="{{medico.user.username}}" {% if medico == medico %}selected{% endif %}>{{medico}}</option>
           {%endfor%}
         </select>
       </div>
@@ -25,28 +25,9 @@
           <span class="input-group-text"><i class="uil uil-clock"></i></span>
           <select class="form-select" id="horario" name='horario'>
             <option selected>Escolha o horário</option>
-            <option value="0800">08:00</option>
-            <option value="0830">08:30</option>
-            <option value="0900">09:00</option>
-            <option value="0930">09:30</option>
-            <option value="1000">10:00</option>
-            <option value="1030">10:30</option>
-            <option value="1100">11:00</option>
-            <option value="1130">11:30</option>
-            <option value="1200">12:00</option>
-            <option value="1400">14:00</option>
-            <option value="1430">14:30</option>
-            <option value="1500">15:00</option>
-            <option value="1530">15:30</option>
-            <option value="1600">16:00</option>
-            <option value="1630">16:30</option>
-            <option value="1700">17:00</option>
-            <option value="1730">17:30</option>
-            <option value="1800">18:00</option>
-            <option value="1830">18:30</option>
-            <option value="1900">19:00</option>
-            <option value="1930">19:30</option>
-            <option value="2000">20:00</option>
+            {% for key, value in horarios.items %}
+            <option value="{{key}}">{{value}}</option>
+            {% endfor %}
             </select>
         </div>
         
