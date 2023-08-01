@@ -1,5 +1,6 @@
 from components.helpers.validacao_data import validacao_data
 from components.helpers.validacao_hora import validacao_hora
+from components.helpers.dataAutomatica import marcarAutomaticamente
 from components.classes.data import Data
 
 def nova_data():
@@ -35,5 +36,8 @@ def nova_data():
         ano, mes, dia = validacao_data()
 
     hora, minuto = validacao_hora(dia, mes, ano)
+    if hora == 'erro':
+        dia, mes, ano, hora, minuto = marcarAutomaticamente()
+        return Data(dia, mes, ano, hora, minuto)
 
-    return Data(dia, mes, ano, hora, minuto)
+    

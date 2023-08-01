@@ -21,7 +21,6 @@ def validacao_data():
             #mes = int(input('Diga o mês para sua consulta: '))
         else:
             break
-        
 
     #dia = int(input('Diga o dia para sua consulta: '))
     while True:
