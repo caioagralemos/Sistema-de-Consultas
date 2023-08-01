@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    <img src="https://res.cloudinary.com/dozecv3ef/image/upload/v1689361207/pic_mwlqif.jpg" class="card-img-top mt-0">
+    <h1 class="text-center pt-3 text-primary-emphasis pb-2">Marque seu tratamento para Hipersensibilidade</h1>
+
+    {% if user.is_authenticated %}
+      {% if user.paciente.hipersensibilidade %}
+    <form class="text-center mt-2 m-5" action="{% url 'agendarconsulta' %}" method='POST'>
+      {% csrf_token %}
+
+      <div class="input-group mb-3">
+        <span class="input-group-text"><i class="uil uil-medkit"></i></span>
+        <select required class="form-select" id="medico" name='medico'>
+        <option selected>Escolha seu médico</option>
+          {% for medico in medicos %}
+          <option value="{{medico.user.username}}">{{medico}}</option>
+          {%endfor%}
+        </select>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
+        <input required type="date" class="form-control" placeholder="Server" aria-label="Server" name='data'>
+          <span class="input-group-text"><i class="uil uil-clock"></i></span>
+          <select class="form-select" id="horario" name='horario'>
+            <option selected>Escolha o horário</option>
+            <option value="0800">08:00</option>
+            <option value="0830">08:30</option>
+            <option value="0900">09:00</option>
+            <option value="0930">09:30</option>
+            <option value="1000">10:00</option>
+            <option value="1030">10:30</option>
+            <option value="1100">11:00</option>
+            <option value="1130">11:30</option>
+            <option value="1200">12:00</option>
+            <option value="1400">14:00</option>
+            <option value="1430">14:30</option>
+            <option value="1500">15:00</option>
+            <option value="1530">15:30</option>
+            <option value="1600">16:00</option>
+            <option value="1630">16:30</option>
+            <option value="1700">17:00</option>
+            <option value="1730">17:30</option>
+            <option value="1800">18:00</option>
+            <option value="1830">18:30</option>
+            <option value="1900">19:00</option>
+            <option value="1930">19:30</option>
+            <option value="2000">20:00</option>
+            </select>
+        </div>
+        
+      <button class="btn btn-lg btn-light border-primary text-primary-emphasis mt-3">Enviar</button>
+    </form>
+
+      {% else %}
+      
+      <h1 class='p-4 text-center'>Você não está habilitado para marcar tratamento para Hipersensibilidade.<br>Caso precise, peça ao seu médico para alterar seu prontuário.</h1>
+
+      {% endif %}
+
+    {% else %}
+
+    <h1 class='p-4 text-center'>Você precisa entrar para marcar uma consulta.</h1>
+    
+    {% endif %}
+  </div>
+{% endblock %}

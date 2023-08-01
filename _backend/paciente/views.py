@@ -77,7 +77,7 @@ def register(request):
             user.save()
 
             # Criando o perfil estendido vinculado ao usuário
-            paciente = Paciente.objects.create(user=user, cpf=cpf, aftas=aftas, hipersensibilidade=hipersensibilidade, consulta=consulta, lesoes=lesoes, nevralgia=nevralgia, pos_cirurgia=pos_cirurgia)
+            paciente = Paciente.objects.create(user=user, cpf=cpf, aftas=aftas, hipersensibilidade=hipersensibilidade, consulta=True, lesoes=lesoes, nevralgia=nevralgia, pos_cirurgia=pos_cirurgia)
             paciente.save()
             messages.success(request, f'Conta de {first_name} criada com sucesso!')
             return redirect('login')
