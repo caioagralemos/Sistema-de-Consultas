@@ -6,7 +6,7 @@
 
     {% if user.is_authenticated %}
       {% if user.paciente.lesoes %}
-    <form class="text-center mt-2 m-5" action="{% url 'agendarconsulta' %}" method='POST'>
+    <form class="text-center mt-2 m-5" action="{% url 'lesoes' %}" method='POST'>
       {% csrf_token %}
 
       <div class="input-group mb-3">

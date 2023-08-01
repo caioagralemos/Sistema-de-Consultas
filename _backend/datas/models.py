@@ -45,7 +45,22 @@ def validar_dia(ano, mes, dia):
                 pass
             else:
                 raise ValidationError('Dia inválido. Esse mes tem 30 dias.')
+            
+def validar_horario(hora, minuto):
+    horas_validas = [8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20]
 
+    if hora in horas_validas:
+        pass
+    else:
+        raise ValidationError('Nesse horário, os médicos não trabalham.\nHorário de funcionamento: 08:00 - 12:00 e 14:00 - 20:00')
+
+    if (hora == 12 or hora == 20) and minuto == 30:
+        raise ValidationError('Nesse horário, os médicos não trabalham.\nHorário de funcionamento: 08:00 - 12:00 e 14:00 - 20:00')
+    
+    if minuto == 0 or minuto == 30:
+        pass
+    else:
+        raise ValidationError('Minuto inválido! As consultas podem ser marcadas apenas em intervalos de 30 minutos!')
 
 class Data(models.Model):
     dia = models.IntegerField()
@@ -53,6 +68,9 @@ class Data(models.Model):
     ano = models.IntegerField()
     hora = models.IntegerField()
     minuto = models.IntegerField()
+
+    def datetime(self):
+        return datetime(self.ano, self.mes, self.dia, self.hora, self.minuto)
 
     def __str__(self):
         if self.hora < 10 and self.minuto == 0:
@@ -68,4 +86,4 @@ class Data(models.Model):
         validar_ano(self.ano)
         validar_mes(self.ano, self.mes)
         validar_dia(self.ano, self.mes, self.dia)
-        disponibilidade_data(self.ano, self.mes, self.dia)
+        validar_horario(self.hora, self.minuto)
