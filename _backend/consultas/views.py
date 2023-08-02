@@ -72,7 +72,7 @@ def aftas(request):
         
         medico_user = request.POST['medico']
         if medico_user == 'Escolha seu médico':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu médico!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10)
+            return aftas_render_error(request, 'Você não escolheu seu médico!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
         medico = Medico.objects.get(user__username=medico_user)
         
         data_1 = request.POST['data1']
@@ -81,7 +81,7 @@ def aftas(request):
         dia_1 = int(data_1[8:])
         horario_1 = request.POST['horario1']
         if horario_1 == 'Escolha o horário':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu horário 1!', medico, data_1, horario_1)
+            return aftas_render_error(request, 'Você não escolheu seu horário 1!', medico, data_1, horario_1)
         hora_1 = int(horario_1[0:2])
         minuto_1 = int(horario_1[2:])
 
@@ -91,7 +91,7 @@ def aftas(request):
         dia_2 = int(data_2[8:])
         horario_2 = request.POST['horario2']
         if horario_2 == 'Escolha o horário':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu horário 2!', medico, data_1, horario_1, data_2, horario_2)
+            return aftas_render_error(request, 'Você não escolheu seu horário 2!', medico, data_1, horario_1, data_2, horario_2)
         hora_2 = int(horario_2[0:2])
         minuto_2 = int(horario_2[2:])
 
@@ -101,7 +101,7 @@ def aftas(request):
         dia_3 = int(data_3[8:])
         horario_3 = request.POST['horario3']
         if horario_3 == 'Escolha o horário':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu horário 3!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3)
+            return aftas_render_error(request, 'Você não escolheu seu horário 3!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3)
         hora_3 = int(horario_3[0:2])
         minuto_3 = int(horario_3[2:])
 
@@ -111,7 +111,7 @@ def aftas(request):
         dia_4 = int(data_4[8:])
         horario_4 = request.POST['horario4']
         if horario_4 == 'Escolha o horário':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu horário 4!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
+            return aftas_render_error(request, 'Você não escolheu seu horário 4!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
         hora_4 = int(horario_4[0:2])
         minuto_4 = int(horario_4[2:])
 
@@ -198,7 +198,7 @@ def hipersensibilidade(request):
         
         medico_user = request.POST['medico']
         if medico_user == 'Escolha seu médico':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu médico!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10)
+            return hipersensibilidade_render_error(request, 'Você não escolheu seu médico!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6)
         medico = Medico.objects.get(user__username=medico_user)
         
         data_1 = request.POST['data1']
@@ -207,7 +207,7 @@ def hipersensibilidade(request):
         dia_1 = int(data_1[8:])
         horario_1 = request.POST['horario1']
         if horario_1 == 'Escolha o horário':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu horário 1!', medico, data_1, horario_1)
+            return hipersensibilidade_render_error(request, 'Você não escolheu seu horário 1!', medico, data_1, horario_1)
         hora_1 = int(horario_1[0:2])
         minuto_1 = int(horario_1[2:])
 
@@ -217,7 +217,7 @@ def hipersensibilidade(request):
         dia_2 = int(data_2[8:])
         horario_2 = request.POST['horario2']
         if horario_2 == 'Escolha o horário':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu horário 2!', medico, data_1, horario_1, data_2, horario_2)
+            return hipersensibilidade_render_error(request, 'Você não escolheu seu horário 2!', medico, data_1, horario_1, data_2, horario_2)
         hora_2 = int(horario_2[0:2])
         minuto_2 = int(horario_2[2:])
 
@@ -227,7 +227,7 @@ def hipersensibilidade(request):
         dia_3 = int(data_3[8:])
         horario_3 = request.POST['horario3']
         if horario_3 == 'Escolha o horário':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu horário 3!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3)
+            return hipersensibilidade_render_error(request, 'Você não escolheu seu horário 3!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3)
         hora_3 = int(horario_3[0:2])
         minuto_3 = int(horario_3[2:])
 
@@ -237,7 +237,7 @@ def hipersensibilidade(request):
         dia_4 = int(data_4[8:])
         horario_4 = request.POST['horario4']
         if horario_4 == 'Escolha o horário':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu horário 4!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
+            return hipersensibilidade_render_error(request, 'Você não escolheu seu horário 4!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
         hora_4 = int(horario_4[0:2])
         minuto_4 = int(horario_4[2:])
 
@@ -247,7 +247,7 @@ def hipersensibilidade(request):
         dia_5 = int(data_5[8:])
         horario_5 = request.POST['horario5']
         if horario_5 == 'Escolha o horário':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu horário 5!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5)        
+            return hipersensibilidade_render_error(request, 'Você não escolheu seu horário 5!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5)        
         hora_5 = int(horario_5[0:2])
         minuto_5 = int(horario_5[2:])
 
@@ -257,7 +257,7 @@ def hipersensibilidade(request):
         dia_6 = int(data_6[8:])
         horario_6 = request.POST['horario6']
         if horario_6 == 'Escolha o horário':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu horário 6!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6)
+            return hipersensibilidade_render_error(request, 'Você não escolheu seu horário 6!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6)
         hora_6 = int(horario_6[0:2])
         minuto_6 = int(horario_6[2:])
 
@@ -376,7 +376,7 @@ def lesoes(request):
         
         medico_user = request.POST['medico']
         if medico_user == 'Escolha seu médico':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu médico!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10)
+            return lesoes_render_error(request, 'Você não escolheu seu médico!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8)
         medico = Medico.objects.get(user__username=medico_user)
         
         data_1 = request.POST['data1']
@@ -385,7 +385,7 @@ def lesoes(request):
         dia_1 = int(data_1[8:])
         horario_1 = request.POST['horario1']
         if horario_1 == 'Escolha o horário':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu horário 1!', medico, data_1, horario_1)
+            return lesoes_render_error(request, 'Você não escolheu seu horário 1!', medico, data_1, horario_1)
         hora_1 = int(horario_1[0:2])
         minuto_1 = int(horario_1[2:])
 
@@ -395,7 +395,7 @@ def lesoes(request):
         dia_2 = int(data_2[8:])
         horario_2 = request.POST['horario2']
         if horario_2 == 'Escolha o horário':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu horário 2!', medico, data_1, horario_1, data_2, horario_2)
+            return lesoes_render_error(request, 'Você não escolheu seu horário 2!', medico, data_1, horario_1, data_2, horario_2)
         hora_2 = int(horario_2[0:2])
         minuto_2 = int(horario_2[2:])
 
@@ -405,7 +405,7 @@ def lesoes(request):
         dia_3 = int(data_3[8:])
         horario_3 = request.POST['horario3']
         if horario_3 == 'Escolha o horário':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu horário 3!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3)
+            return lesoes_render_error(request, 'Você não escolheu seu horário 3!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3)
         hora_3 = int(horario_3[0:2])
         minuto_3 = int(horario_3[2:])
 
@@ -415,7 +415,7 @@ def lesoes(request):
         dia_4 = int(data_4[8:])
         horario_4 = request.POST['horario4']
         if horario_4 == 'Escolha o horário':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu horário 4!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
+            return lesoes_render_error(request, 'Você não escolheu seu horário 4!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
         hora_4 = int(horario_4[0:2])
         minuto_4 = int(horario_4[2:])
 
@@ -425,7 +425,7 @@ def lesoes(request):
         dia_5 = int(data_5[8:])
         horario_5 = request.POST['horario5']
         if horario_5 == 'Escolha o horário':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu horário 5!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5)        
+            return lesoes_render_error(request, 'Você não escolheu seu horário 5!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5)        
         hora_5 = int(horario_5[0:2])
         minuto_5 = int(horario_5[2:])
 
@@ -435,7 +435,7 @@ def lesoes(request):
         dia_6 = int(data_6[8:])
         horario_6 = request.POST['horario6']
         if horario_6 == 'Escolha o horário':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu horário 6!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6)
+            return lesoes_render_error(request, 'Você não escolheu seu horário 6!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6)
         hora_6 = int(horario_6[0:2])
         minuto_6 = int(horario_6[2:])
 
@@ -445,7 +445,7 @@ def lesoes(request):
         dia_7 = int(data_7[8:])
         horario_7 = request.POST['horario7']
         if horario_7 == 'Escolha o horário':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu horário 7!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7)        
+            return lesoes_render_error(request, 'Você não escolheu seu horário 7!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7)        
         hora_7 = int(horario_7[0:2])
         minuto_7 = int(horario_7[2:])
 
@@ -455,7 +455,7 @@ def lesoes(request):
         dia_8 = int(data_8[8:])
         horario_8 = request.POST['horario8']
         if horario_8 == 'Escolha o horário':
-            return pos_cirurgia_render_error(request, 'Você não escolheu seu horário 8!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8)       
+            return lesoes_render_error(request, 'Você não escolheu seu horário 8!', medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8)       
         hora_8 = int(horario_8[0:2])
         minuto_8 = int(horario_8[2:])
 
