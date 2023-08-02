@@ -90,3 +90,4 @@ class Data(models.Model):
         validar_mes(self.ano, self.mes)
         validar_dia(self.ano, self.mes, self.dia)
         validar_horario(self.hora, self.minuto)
+        disponibilidade_data(self.ano, self.mes, self.dia)

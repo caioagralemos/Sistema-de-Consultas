@@ -14,7 +14,3 @@ def disponibilidade_data(ano, mes, dia):
     
     if data.weekday() == 6: # se for num domingo
         raise ValidationError(f'Uma das consultas cairia num domingo.\nConsulta do dia {dia}/{mes}/{ano}')
-    
-    # for c in objeto: # se tiver alguma consulta no dia
-    #     if dia == c['data']['dia'] and mes == c['data']['mes'] and ano == c['data']['ano']:
-    #         return f'Já existem consultas marcadas para o dia {dia}/{mes}/{ano}'
