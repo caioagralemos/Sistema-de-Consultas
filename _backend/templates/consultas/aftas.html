@@ -2,7 +2,8 @@
 {% block content %}
 <div>
     <img src="https://res.cloudinary.com/dozecv3ef/image/upload/v1689361207/pic_mwlqif.jpg" class="card-img-top mt-0">
-    <h1 class="text-center pt-3 text-primary-emphasis pb-2">Marque seu tratamento para Aftas</h1>
+    <h1 class="text-center pt-3 text-primary-emphasis">Marque seu tratamento para Aftas</h1>
+    <p class="text-center pb-2">4 sessões, tempo entre aplicações de 4 a 8 dias, 30 minutos por sessão</p>
 
     {% if user.is_authenticated %}
       {% if user.paciente.hipersensibilidade %}
