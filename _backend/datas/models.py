@@ -76,8 +76,10 @@ class Data(models.Model):
     hora = models.IntegerField()
     minuto = models.IntegerField()
 
-    def datetime(self):
+    def get_datetime(self):
         return datetime(self.ano, self.mes, self.dia, self.hora, self.minuto)
+
+    data_hora_completa = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         if self.hora < 10 and self.minuto == 0:
@@ -95,3 +97,4 @@ class Data(models.Model):
         validar_dia(self.ano, self.mes, self.dia)
         validar_horario(self.hora, self.minuto)
         disponibilidade_data(self.ano, self.mes, self.dia)
+        self.data_hora_completa = self.get_datetime()

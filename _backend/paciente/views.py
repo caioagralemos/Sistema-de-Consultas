@@ -86,7 +86,7 @@ def register(request):
 
 def dashboard(request):
     context = {
-        'consultas': Consulta.objects.all().filter(paciente=request.user.paciente, ehParte2=False),
+        'consultas': Consulta.objects.filter(paciente=request.user.paciente, ehParte2=False).order_by('data__data_hora_completa'),
     }
     return render(request, 'paciente/dashboard.html', context)
 
