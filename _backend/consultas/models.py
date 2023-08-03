@@ -29,6 +29,7 @@ class Consulta(models.Model):
         choices=OPCOES_CHOICES,
         default=OPCAO_1,  # Valor padrão
     )
+    ehParte2 = models.BooleanField(default=False)
 
     @property
     def data_hora_completa(self):

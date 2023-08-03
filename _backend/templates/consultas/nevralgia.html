@@ -20,17 +20,230 @@
         </select>
       </div>
 
-      <div class="input-group mb-3">
-        <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
-        <input required type="date" class="form-control" placeholder="Server" aria-label="Server" name='data'>
-          <span class="input-group-text"><i class="uil uil-clock"></i></span>
-          <select class="form-select" id="horario" name='horario'>
-            <option selected>Escolha o horário</option>
-            {% for key, value in horarios.items %}
-            <option value="{{key}}">{{value}}</option>
-            {% endfor %}
-            </select>
-        </div>
+      <div>
+        <label for="horario1" class="form-label">Sessão 1</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
+          <input required type="date" class="form-control" placeholder="Server" aria-label="Server" name='data1' value={{data1}}>
+            <span class="input-group-text"><i class="uil uil-clock"></i></span>
+            <select class="form-select" id="horario1" name='horario1'>
+              <option selected>Escolha o horário</option>
+              {% for key, value in horarios.items %}
+              <option value="{{key}}" {% if key == horario1 %}selected{% endif %}>{{value}}</option>
+              {% endfor %}
+              </select>
+          </div>
+      </div>
+  
+      <div>
+        <label for="horario2" class="form-label">Sessão 2</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
+          <input required type="date" class="form-control" placeholder="Server" aria-label="Server" name='data2' value={{data2}}>
+            <span class="input-group-text"><i class="uil uil-clock"></i></span>
+            <select class="form-select" id="horario2" name='horario2'>
+              <option selected>Escolha o horário</option>
+              {% for key, value in horarios.items %}
+              <option value="{{key}}" {% if key == horario2 %}selected{% endif %}>{{value}}</option>
+              {% endfor %}
+              </select>
+          </div>
+      </div>
+  
+      <div>
+        <label for="horario3" class="form-label">Sessão 3</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
+          <input required type="date" class="form-control" placeholder="Server" aria-label="Server" name='data3' value={{data3}}>
+            <span class="input-group-text"><i class="uil uil-clock"></i></span>
+            <select class="form-select" id="horario3" name='horario3'>
+              <option selected>Escolha o horário</option>
+              {% for key, value in horarios.items %}
+              <option value="{{key}}" {% if key == horario3 %}selected{% endif %}>{{value}}</option>
+              {% endfor %}
+              </select>
+          </div>
+      </div>
+  
+      <div>
+        <label for="horario4" class="form-label">Sessão 4</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
+          <input required type="date" class="form-control" placeholder="Server" aria-label="Server" name='data4' value={{data4}}>
+            <span class="input-group-text"><i class="uil uil-clock"></i></span>
+            <select class="form-select" id="horario4" name='horario4'>
+              <option selected>Escolha o horário</option>
+              {% for key, value in horarios.items %}
+              <option value="{{key}}" {% if key == horario4 %}selected{% endif %}>{{value}}</option>
+              {% endfor %}
+              </select>
+          </div>
+      </div>
+        
+      <div>
+        <label for="horario5" class="form-label">Sessão 5</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
+          <input required type="date" class="form-control" placeholder="Server" aria-label="Server" name='data5' value={{data5}}>
+            <span class="input-group-text"><i class="uil uil-clock"></i></span>
+            <select class="form-select" id="horario5" name='horario5'>
+              <option selected>Escolha o horário</option>
+              {% for key, value in horarios.items %}
+              <option value="{{key}}" {% if key == horario5 %}selected{% endif %}>{{value}}</option>
+              {% endfor %}
+              </select>
+          </div>
+      </div>
+        
+      <div>
+        <label for="horario6" class="form-label">Sessão 6</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
+          <input required type="date" class="form-control" placeholder="Server" aria-label="Server" name='data6' value={{data6}}>
+            <span class="input-group-text"><i class="uil uil-clock"></i></span>
+            <select class="form-select" id="horario6" name='horario6'>
+              <option selected>Escolha o horário</option>
+              {% for key, value in horarios.items %}
+              <option value="{{key}}" {% if key == horario6 %}selected{% endif %}>{{value}}</option>
+              {% endfor %}
+              </select>
+          </div>
+      </div>
+        
+      <div>
+        <label for="horario7" class="form-label">Sessão 7</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
+          <input required type="date" class="form-control" placeholder="Server" aria-label="Server" name='data7' value={{data7}}>
+            <span class="input-group-text"><i class="uil uil-clock"></i></span>
+            <select class="form-select" id="horario7" name='horario7'>
+              <option selected>Escolha o horário</option>
+              {% for key, value in horarios.items %}
+              <option value="{{key}}" {% if key == horario7 %}selected{% endif %}>{{value}}</option>
+              {% endfor %}
+              </select>
+          </div>
+      </div>
+        
+      <div>
+        <label for="horario8" class="form-label">Sessão 8</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
+          <input required type="date" class="form-control" placeholder="Server" aria-label="Server" name='data8' value={{data8}}>
+            <span class="input-group-text"><i class="uil uil-clock"></i></span>
+            <select class="form-select" id="horario8" name='horario8'>
+              <option selected>Escolha o horário</option>
+              {% for key, value in horarios.items %}
+              <option value="{{key}}" {% if key == horario8 %}selected{% endif %}>{{value}}</option>
+              {% endfor %}
+              </select>
+          </div>
+      </div>
+        
+      <div>
+        <label for="horario9" class="form-label">Sessão 9</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
+          <input required type="date" class="form-control" placeholder="Server" aria-label="Server" name='data9' value={{data9}}>
+            <span class="input-group-text"><i class="uil uil-clock"></i></span>
+            <select class="form-select" id="horario9" name='horario9'>
+              <option selected>Escolha o horário</option>
+              {% for key, value in horarios.items %}
+              <option value="{{key}}" {% if key == horario9 %}selected{% endif %}>{{value}}</option>
+              {% endfor %}
+              </select>
+          </div>
+      </div>
+        
+      <div>
+        <label for="horario10" class="form-label">Sessão 10</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
+          <input required type="date" class="form-control" placeholder="Server" aria-label="Server" name='data10' value={{data10}}>
+            <span class="input-group-text"><i class="uil uil-clock"></i></span>
+            <select class="form-select" id="horario10" name='horario10'>
+              <option selected>Escolha o horário</option>
+              {% for key, value in horarios.items %}
+              <option value="{{key}}" {% if key == horario10 %}selected{% endif %}>{{value}}</option>
+              {% endfor %}
+              </select>
+          </div>
+      </div>
+
+      <div>
+        <label for="horario11" class="form-label">Sessão 11</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
+          <input required type="date" class="form-control" placeholder="Server" aria-label="Server" name='data11' value={{data11}}>
+            <span class="input-group-text"><i class="uil uil-clock"></i></span>
+            <select class="form-select" id="horario11" name='horario11'>
+              <option selected>Escolha o horário</option>
+              {% for key, value in horarios.items %}
+              <option value="{{key}}" {% if key == horario11 %}selected{% endif %}>{{value}}</option>
+              {% endfor %}
+              </select>
+          </div>
+      </div>
+        
+      <div>
+        <label for="horario12" class="form-label">Sessão 12</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
+          <input required type="date" class="form-control" placeholder="Server" aria-label="Server" name='data12' value={{data12}}>
+            <span class="input-group-text"><i class="uil uil-clock"></i></span>
+            <select class="form-select" id="horario12" name='horario12'>
+              <option selected>Escolha o horário</option>
+              {% for key, value in horarios.items %}
+              <option value="{{key}}" {% if key == horario12 %}selected{% endif %}>{{value}}</option>
+              {% endfor %}
+              </select>
+          </div>
+      </div>
+        
+      <div>
+        <label for="horario13" class="form-label">Sessão 13</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
+          <input required type="date" class="form-control" placeholder="Server" aria-label="Server" name='data13' value={{data13}}>
+            <span class="input-group-text"><i class="uil uil-clock"></i></span>
+            <select class="form-select" id="horario13" name='horario13'>
+              <option selected>Escolha o horário</option>
+              {% for key, value in horarios.items %}
+              <option value="{{key}}" {% if key == horario13 %}selected{% endif %}>{{value}}</option>
+              {% endfor %}
+              </select>
+          </div>
+      </div>
+        
+      <div>
+        <label for="horario14" class="form-label">Sessão 14</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
+          <input required type="date" class="form-control" placeholder="Server" aria-label="Server" name='data14' value={{data14}}>
+            <span class="input-group-text"><i class="uil uil-clock"></i></span>
+            <select class="form-select" id="horario14" name='horario14'>
+              <option selected>Escolha o horário</option>
+              {% for key, value in horarios.items %}
+              <option value="{{key}}" {% if key == horario14 %}selected{% endif %}>{{value}}</option>
+              {% endfor %}
+              </select>
+          </div>
+      </div>
+        
+      <div>
+        <label for="horario15" class="form-label">Sessão 15</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="uil uil-calendar-alt"></i></span>
+          <input required type="date" class="form-control" placeholder="Server" aria-label="Server" name='data15' value={{data15}}>
+            <span class="input-group-text"><i class="uil uil-clock"></i></span>
+            <select class="form-select" id="horario15" name='horario15'>
+              <option selected>Escolha o horário</option>
+              {% for key, value in horarios.items %}
+              <option value="{{key}}" {% if key == horario15 %}selected{% endif %}>{{value}}</option>
+              {% endfor %}
+              </select>
+          </div>
+      </div>
         
       <button class="btn btn-lg btn-light border-primary text-primary-emphasis mt-3">Enviar</button>
     </form>

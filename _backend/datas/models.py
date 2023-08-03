@@ -8,12 +8,16 @@ from django.core.exceptions import ValidationError
 def validar_ano(ano):
         if ano < datetime.now().year:
             raise ValidationError('Ano inválido!')
+        else:
+            pass
 
 def validar_mes(ano, mes):
     if ano == datetime.now().year and mes < datetime.now().month:
             raise ValidationError('Mes inválido. Esse mês já passou.')
     elif mes < 1 or mes > 12:
             raise ValidationError('Mes inválido.')
+    else:
+        pass
 
 def validar_dia(ano, mes, dia):
         if dia > 31 or dia < 1:
@@ -55,10 +59,10 @@ def validar_horario(hora, minuto):
     if hora in horas_validas:
         pass
     else:
-        raise ValidationError('Nesse horário, os médicos não trabalham.\nHorário de funcionamento: 08:00 - 12:00 e 14:00 - 20:00')
+        raise ValidationError('Nesse horário, os médicos não trabalham.\nHorários de consulta: 08:00 - 12:00 e 14:00 - 20:00')
 
     if (hora == 12 or hora == 20) and minuto == 30:
-        raise ValidationError('Nesse horário, os médicos não trabalham.\nHorário de funcionamento: 08:00 - 12:00 e 14:00 - 20:00')
+        raise ValidationError('Nesse horário, os médicos não trabalham.\nHorários de consulta: 08:00 - 12:00 e 14:00 - 20:00')
     
     if minuto == 0 or minuto == 30:
         pass

@@ -86,7 +86,7 @@ def register(request):
 
 def dashboard(request):
     context = {
-        'consultas': Consulta.objects.all().filter(paciente=request.user.paciente),
+        'consultas': Consulta.objects.all().filter(paciente=request.user.paciente, ehParte2=False),
     }
     return render(request, 'paciente/dashboard.html', context)
 
@@ -101,7 +101,7 @@ def login(request):
             auth.login(request, user)
             try:
                 if user.medico:
-                    messages.success(request, f'Bem vindo(a), Dr(a). {user.medico.first_name}')
+                    messages.success(request, f'Bem vindo(a), {user.medico.first_name}')
                     return redirect('medico-dashboard')
             except:
                 messages.success(request, f'Bem vindo(a), {user.first_name}')
