@@ -8,6 +8,8 @@ from paciente.helpers.checar_nome_valido import checar_nome_valido
 from .models import Paciente
 from consultas.models import Consulta
 
+from datetime import datetime
+
 # Create your views here.
 
 def register(request):
@@ -86,9 +88,15 @@ def register(request):
 
 def dashboard(request):
     context = {
-        'consultas': Consulta.objects.filter(paciente=request.user.paciente, ehParte2=False).order_by('data__data_hora_completa'),
+        'consultas': Consulta.objects.filter(paciente=request.user.paciente, ehParte2=False, data__data_hora_completa__gte=datetime.now()).order_by('data__data_hora_completa'),
     }
     return render(request, 'paciente/dashboard.html', context)
+
+def consultas_passadas(request):
+    context = {
+        'consultas': Consulta.objects.filter(paciente=request.user.paciente, ehParte2=False, data__data_hora_completa__lt=datetime.now()).order_by('data__data_hora_completa'),
+    }
+    return render(request, 'paciente/consultas_passadas.html', context)
 
 def login(request):
     if request.method == 'POST':

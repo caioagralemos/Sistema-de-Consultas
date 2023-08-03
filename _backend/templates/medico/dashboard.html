@@ -11,7 +11,6 @@
         overflow-y: auto;
         text-align:justify;'>
           {% for consulta in consultas %}
-            {% if consulta.medico.user.username == user.username %}
               <div class="card m-2">
                 <div class="card-body">
                   <h5 class="card-title">{{ consulta.paciente }}</h5>
@@ -19,9 +18,11 @@
                   <p class="card-text">Serviço - {{ consulta.servico|capfirst }}</p>
                 </div>
               </div>
-            {% endif %}
           {% endfor %}
         </div>
+        <a class="icon-link icon-link-hover link-dark link-underline-dark link-underline-opacity-25" href="{% url 'medico-consultas-passadas' %}">
+          Consultas Passadas
+        </a>
       {% else %}
         <p>Nenhuma consulta disponível.</p>
       {% endif %}
