@@ -4,8 +4,6 @@ from consultas.models import Consulta
 
 from datetime import datetime
 
-from django.db.models import F
-
 # Create your views here.
 
 def dashboard(request):
