@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-*j=#c%2o$$5&q)+p7g1l6b@s@rhp1+-anjn7rz^#m671mdqzk2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.mydjango.kinghost.net', 'mydjango.kinghost.net']
 
 
 # Application definition
@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-BR'
 
 TIME_ZONE = 'UTC'
 
@@ -123,10 +123,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+STATIC_ROOT = '/home/mydjango/www/projeto/static'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'sistema_de_consultas/static')
+    os.path.join(BASE_DIR, 'projeto/static')
 ]
 
 

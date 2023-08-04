@@ -6,7 +6,7 @@
     <p class="text-center pb-2">4 sessões, tempo entre aplicações de 4 a 8 dias, 30 minutos por sessão</p>
 
     {% if user.is_authenticated %}
-      {% if user.paciente.hipersensibilidade %}
+      {% if user.paciente.aftas %}
     <form class="text-center mt-2 m-5" action="{% url 'aftas' %}" method='POST'>
       {% csrf_token %}
 
