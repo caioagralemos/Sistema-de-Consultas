@@ -13,24 +13,24 @@
                     <div class='row justify-content-center'>                          
                         <div class="form-group col-md-6">
                             <label for="first_name">Nome</label>
-                            <input type="text" required class="form-control" id="first_name" name="first_name" placeholder="ex: Márcio">
+                            <input type="text" required class="form-control" id="first_name" name="first_name" placeholder="ex: Márcio" value={{first_name}}>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="last_name">Sobrenome</label>
-                            <input type="text" required class="form-control" id="last_name" name="last_name" placeholder="ex: Gomes">
+                            <input type="text" required class="form-control" id="last_name" name="last_name" placeholder="ex: Gomes" value={{last_name}}>
                         </div>
                     </div>
                         <div class="form-group">
                             <label for="cpf">CPF</label>
-                            <input type="text" maxlength='14' required class="form-control" id="cpf" name="cpf" placeholder="000.000.000-00">
+                            <input type="text" maxlength='14' required class="form-control" id="cpf" name="cpf" placeholder="000.000.000-00" value={{cpf}}>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" required class="form-control" id="email" name="email" placeholder="meunome@hu.com.br">
+                            <input type="email" required class="form-control" id="email" name="email" placeholder="meunome@hu.com.br" value={{email}}>
                         </div>
                         <div class="form-group">
                             <label for="username">Usuário</label>
-                            <input type="text" required class="form-control" id="username" name='username' placeholder="Digite seu usuário">
+                            <input type="text" required class="form-control" id="username" name='username' placeholder="Digite seu usuário" value={{username}}>
                         </div>
                     <div class='row justify-content-center'>                          
                         <div class="form-group col-md-6">
@@ -46,21 +46,21 @@
                     <div>
                         <h4>Prontuário</h4>
                         <div class="form-group form-check-inline">
-                            <input type="checkbox" class="form-check-input" name="aftas" id="aftas">
+                            <input type="checkbox" class="form-check-input" name="aftas" id="aftas" {%if aftas%} checked {%endif%}>
                             <label class="form-check-label" for="aftas">Aftas</label>
 
-                            <input type="checkbox" class="form-check-input" name="hipersensibilidade" id="hipersensibilidade">
+                            <input type="checkbox" class="form-check-input" name="hipersensibilidade" id="hipersensibilidade" {% if hipersensibilidade %} checked {%endif%}>
                             <label class="form-check-label" for="hipersensibilidade">Hipersensibilidade</label>
 
-                            <input type="checkbox" class="form-check-input" name="lesoes" id="lesoes">
+                            <input type="checkbox" class="form-check-input" name="lesoes" id="lesoes" {%if lesoes %} checked {%endif%}>
                             <label class="form-check-label" for="lesoes">Lesões</label>
                         </div>
                         <br>
                         <div class="form-group form-check-inline">
-                            <input type="checkbox" class="form-check-input" name="pos_cirurgia" id="pos_cirurgia">
+                            <input type="checkbox" class="form-check-input" name="pos_cirurgia" id="pos_cirurgia" {% if pos_cirurgia %} checked {%endif%}>
                             <label class="form-check-label" for="pos_cirurgia">Pós-Cirurgia</label>
 
-                            <input type="checkbox" class="form-check-input" name="nevralgia" id="nevralgia">
+                            <input type="checkbox" class="form-check-input" name="nevralgia" id="nevralgia" {% if nevralgia %} checked {%endif%}>
                             <label class="form-check-label" for="nevralgia">Nevralgia</label>
                             
                         </div>

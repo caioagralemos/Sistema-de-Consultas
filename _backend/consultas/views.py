@@ -145,7 +145,7 @@ def aftas(request):
             nova_data_1.clean()
             nova_data_1.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 1: ' + ', '.join(e.messages)
             return aftas_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
 
         try:
@@ -153,7 +153,7 @@ def aftas(request):
             nova_data_2.clean()
             nova_data_2.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 2: ' +', '.join(e.messages)
             return aftas_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
 
         try:
@@ -161,7 +161,7 @@ def aftas(request):
             nova_data_3.clean()
             nova_data_3.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 3: ' + ', '.join(e.messages)
             return aftas_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
 
         try:
@@ -169,7 +169,7 @@ def aftas(request):
             nova_data_4.clean()
             nova_data_4.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 4: ' + ', '.join(e.messages)
             return aftas_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4)
         
         if check_future(nova_data_1, nova_data_2) not in range(4,9):      
@@ -291,7 +291,7 @@ def hipersensibilidade(request):
             nova_data_1.clean()
             nova_data_1.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 1: ' + ', '.join(e.messages)
             return hipersensibilidade_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6)
 
         try:
@@ -299,7 +299,7 @@ def hipersensibilidade(request):
             nova_data_2.clean()
             nova_data_2.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 2: ' + ', '.join(e.messages)
             return hipersensibilidade_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6)
 
         try:
@@ -307,7 +307,7 @@ def hipersensibilidade(request):
             nova_data_3.clean()
             nova_data_3.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 3: ' + ', '.join(e.messages)
             return hipersensibilidade_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6)
 
         try:
@@ -315,7 +315,7 @@ def hipersensibilidade(request):
             nova_data_4.clean()
             nova_data_4.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 4: ' + ', '.join(e.messages)
             return hipersensibilidade_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6)
 
         try:
@@ -323,7 +323,7 @@ def hipersensibilidade(request):
             nova_data_5.clean()
             nova_data_5.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 4: ' + ', '.join(e.messages)
             return hipersensibilidade_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6)
 
         try:
@@ -331,7 +331,7 @@ def hipersensibilidade(request):
             nova_data_6.clean()
             nova_data_6.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 6: ' + ', '.join(e.messages)
             return hipersensibilidade_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6)
         
         if check_future(nova_data_1, nova_data_2) not in range(15,31):      
@@ -489,7 +489,7 @@ def lesoes(request):
             nova_data_1.clean()
             nova_data_1.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 1: ' + ', '.join(e.messages)
             return lesoes_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8)
 
         try:
@@ -497,7 +497,7 @@ def lesoes(request):
             nova_data_2.clean()
             nova_data_2.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 2: ' + ', '.join(e.messages)
             return lesoes_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8)
 
         try:
@@ -505,7 +505,7 @@ def lesoes(request):
             nova_data_3.clean()
             nova_data_3.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 3: ' + ', '.join(e.messages)
             return lesoes_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8)
 
         try:
@@ -513,7 +513,7 @@ def lesoes(request):
             nova_data_4.clean()
             nova_data_4.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 4: ' + ', '.join(e.messages)
             return lesoes_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8)
 
         try:
@@ -521,7 +521,7 @@ def lesoes(request):
             nova_data_5.clean()
             nova_data_5.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 5: ' + ', '.join(e.messages)
             return lesoes_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8)
 
         try:
@@ -529,7 +529,7 @@ def lesoes(request):
             nova_data_6.clean()
             nova_data_6.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 6: ' + ', '.join(e.messages)
             return lesoes_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8)
 
         try:
@@ -537,7 +537,7 @@ def lesoes(request):
             nova_data_7.clean()
             nova_data_7.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 7: ' + ', '.join(e.messages)
             return lesoes_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8)
 
         try:
@@ -545,7 +545,7 @@ def lesoes(request):
             nova_data_8.clean()
             nova_data_8.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 8: ' + ', '.join(e.messages)
             return lesoes_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8)
         
         if check_future(nova_data_1, nova_data_2) not in range(10,21):      
@@ -739,7 +739,7 @@ def pos_cirurgia(request):
             nova_data_1.clean()
             nova_data_1.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 1: ' + ', '.join(e.messages)
             return pos_cirurgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10)
 
         try:
@@ -747,7 +747,7 @@ def pos_cirurgia(request):
             nova_data_2.clean()
             nova_data_2.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 2: ' + ', '.join(e.messages)
             return pos_cirurgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10)
 
         try:
@@ -755,7 +755,7 @@ def pos_cirurgia(request):
             nova_data_3.clean()
             nova_data_3.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 3: ' + ', '.join(e.messages)
             return pos_cirurgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10)
 
         try:
@@ -763,7 +763,7 @@ def pos_cirurgia(request):
             nova_data_4.clean()
             nova_data_4.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 4: ' + ', '.join(e.messages)
             return pos_cirurgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10)
 
         try:
@@ -771,7 +771,7 @@ def pos_cirurgia(request):
             nova_data_5.clean()
             nova_data_5.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 5: ' + ', '.join(e.messages)
             return pos_cirurgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10)
 
         try:
@@ -779,7 +779,7 @@ def pos_cirurgia(request):
             nova_data_6.clean()
             nova_data_6.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 6: ' + ', '.join(e.messages)
             return pos_cirurgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10)
 
         try:
@@ -787,7 +787,7 @@ def pos_cirurgia(request):
             nova_data_7.clean()
             nova_data_7.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 7: ' + ', '.join(e.messages)
             return pos_cirurgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10)
 
         try:
@@ -795,7 +795,7 @@ def pos_cirurgia(request):
             nova_data_8.clean()
             nova_data_8.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 8: ' + ', '.join(e.messages)
             return pos_cirurgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10)
 
         try:
@@ -803,7 +803,7 @@ def pos_cirurgia(request):
             nova_data_9.clean()
             nova_data_9.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 9: ' + ', '.join(e.messages)
             return pos_cirurgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10)
         
         try:
@@ -811,7 +811,7 @@ def pos_cirurgia(request):
             nova_data_10.clean()
             nova_data_10.save()
         except ValidationError as e:
-            error_messages = ', '.join(e.messages)
+            error_messages = 'Sessão 10: ' + ', '.join(e.messages)
             return pos_cirurgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10)
         
         if check_future(nova_data_1, nova_data_2) not in range(7,14):      
@@ -1176,7 +1176,7 @@ def nevralgia(request):
             nova_data_1_1.clean()
             nova_data_1_1.save()
         except ValidationError as e:
-            error_messages = 'Sessão 1, '.join(e.messages)
+            error_messages = 'Sessão 1: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1184,7 +1184,7 @@ def nevralgia(request):
             nova_data_1_2.clean()
             nova_data_1_2.save()
         except ValidationError as e:
-            error_messages = 'Sessão 1, '.join(e.messages)
+            error_messages = 'Sessão 1: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
 
         try:
@@ -1192,7 +1192,7 @@ def nevralgia(request):
             nova_data_2_1.clean()
             nova_data_2_1.save()
         except ValidationError as e:
-            error_messages = 'Sessão 2, '.join(e.messages)
+            error_messages = 'Sessão 2: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1200,7 +1200,7 @@ def nevralgia(request):
             nova_data_2_2.clean()
             nova_data_2_2.save()
         except ValidationError as e:
-            error_messages = 'Sessão 2, '.join(e.messages)
+            error_messages = 'Sessão 2: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1208,7 +1208,7 @@ def nevralgia(request):
             nova_data_3_1.clean()
             nova_data_3_1.save()
         except ValidationError as e:
-            error_messages = 'Sessão 3, '.join(e.messages)
+            error_messages = 'Sessão 3: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1216,7 +1216,7 @@ def nevralgia(request):
             nova_data_3_2.clean()
             nova_data_3_2.save()
         except ValidationError as e:
-            error_messages = 'Sessão 3, '.join(e.messages)
+            error_messages = 'Sessão 3: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
 
         try:
@@ -1224,7 +1224,7 @@ def nevralgia(request):
             nova_data_4_1.clean()
             nova_data_4_1.save()
         except ValidationError as e:
-            error_messages = 'Sessão 4, '.join(e.messages)
+            error_messages = 'Sessão 4: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1232,7 +1232,7 @@ def nevralgia(request):
             nova_data_4_2.clean()
             nova_data_4_2.save()
         except ValidationError as e:
-            error_messages = 'Sessão 4, '.join(e.messages)
+            error_messages = 'Sessão 4: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
 
         try:
@@ -1240,7 +1240,7 @@ def nevralgia(request):
             nova_data_5_1.clean()
             nova_data_5_1.save()
         except ValidationError as e:
-            error_messages = 'Sessão 5, '.join(e.messages)
+            error_messages = 'Sessão 5: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1248,7 +1248,7 @@ def nevralgia(request):
             nova_data_5_2.clean()
             nova_data_5_2.save()
         except ValidationError as e:
-            error_messages = 'Sessão 5, '.join(e.messages)
+            error_messages = 'Sessão 5: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
 
         try:
@@ -1256,7 +1256,7 @@ def nevralgia(request):
             nova_data_6_1.clean()
             nova_data_6_1.save()
         except ValidationError as e:
-            error_messages = 'Sessão 6, '.join(e.messages)
+            error_messages = 'Sessão 6: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1264,7 +1264,7 @@ def nevralgia(request):
             nova_data_6_2.clean()
             nova_data_6_2.save()
         except ValidationError as e:
-            error_messages = 'Sessão 6, '.join(e.messages)
+            error_messages = 'Sessão 6: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
 
         try:
@@ -1272,7 +1272,7 @@ def nevralgia(request):
             nova_data_7_1.clean()
             nova_data_7_1.save()
         except ValidationError as e:
-            error_messages = 'Sessão 7, '.join(e.messages)
+            error_messages = 'Sessão 7: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1280,7 +1280,7 @@ def nevralgia(request):
             nova_data_7_2.clean()
             nova_data_7_2.save()
         except ValidationError as e:
-            error_messages = 'Sessão 7, '.join(e.messages)
+            error_messages = 'Sessão 7: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
 
         try:
@@ -1288,7 +1288,7 @@ def nevralgia(request):
             nova_data_8_1.clean()
             nova_data_8_1.save()
         except ValidationError as e:
-            error_messages = 'Sessão 8, '.join(e.messages)
+            error_messages = 'Sessão 8: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
 
         try:
@@ -1296,7 +1296,7 @@ def nevralgia(request):
             nova_data_8_2.clean()
             nova_data_8_2.save()
         except ValidationError as e:
-            error_messages = 'Sessão 8, '.join(e.messages)
+            error_messages = 'Sessão 8: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
 
         try:
@@ -1304,7 +1304,7 @@ def nevralgia(request):
             nova_data_9_1.clean()
             nova_data_9_1.save()
         except ValidationError as e:
-            error_messages = 'Sessão 9, '.join(e.messages)
+            error_messages = 'Sessão 9: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1312,7 +1312,7 @@ def nevralgia(request):
             nova_data_9_2.clean()
             nova_data_9_2.save()
         except ValidationError as e:
-            error_messages = 'Sessão 9, '.join(e.messages)
+            error_messages = 'Sessão 9: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1320,7 +1320,7 @@ def nevralgia(request):
             nova_data_10_1.clean()
             nova_data_10_1.save()
         except ValidationError as e:
-            error_messages = 'Sessão 10, '.join(e.messages)
+            error_messages = 'Sessão 10: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1328,7 +1328,7 @@ def nevralgia(request):
             nova_data_10_2.clean()
             nova_data_10_2.save()
         except ValidationError as e:
-            error_messages = 'Sessão 10, '.join(e.messages)
+            error_messages = 'Sessão 10: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1336,7 +1336,7 @@ def nevralgia(request):
             nova_data_11_1.clean()
             nova_data_11_1.save()
         except ValidationError as e:
-            error_messages = 'Sessão 11, '.join(e.messages)
+            error_messages = 'Sessão 11: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1344,7 +1344,7 @@ def nevralgia(request):
             nova_data_11_2.clean()
             nova_data_11_2.save()
         except ValidationError as e:
-            error_messages = 'Sessão 11, '.join(e.messages)
+            error_messages = 'Sessão 11: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1352,7 +1352,7 @@ def nevralgia(request):
             nova_data_12_1.clean()
             nova_data_12_1.save()
         except ValidationError as e:
-            error_messages = 'Sessão 12, '.join(e.messages)
+            error_messages = 'Sessão 12: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1360,7 +1360,7 @@ def nevralgia(request):
             nova_data_12_2.clean()
             nova_data_12_2.save()
         except ValidationError as e:
-            error_messages = 'Sessão 12, '.join(e.messages)
+            error_messages = 'Sessão 12: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1368,7 +1368,7 @@ def nevralgia(request):
             nova_data_13_1.clean()
             nova_data_13_1.save()
         except ValidationError as e:
-            error_messages = 'Sessão 13, '.join(e.messages)
+            error_messages = 'Sessão 13: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1376,7 +1376,7 @@ def nevralgia(request):
             nova_data_13_2.clean()
             nova_data_13_2.save()
         except ValidationError as e:
-            error_messages = 'Sessão 13, '.join(e.messages)
+            error_messages = 'Sessão 13: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1384,7 +1384,7 @@ def nevralgia(request):
             nova_data_14_1.clean()
             nova_data_14_1.save()
         except ValidationError as e:
-            error_messages = 'Sessão 14, '.join(e.messages)
+            error_messages = 'Sessão 14: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1392,7 +1392,7 @@ def nevralgia(request):
             nova_data_14_2.clean()
             nova_data_14_2.save()
         except ValidationError as e:
-            error_messages = 'Sessão 14, '.join(e.messages)
+            error_messages = 'Sessão 14: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1400,7 +1400,7 @@ def nevralgia(request):
             nova_data_15_1.clean()
             nova_data_15_1.save()
         except ValidationError as e:
-            error_messages = 'Sessão 15, '.join(e.messages)
+            error_messages = 'Sessão 15: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         try:
@@ -1408,7 +1408,7 @@ def nevralgia(request):
             nova_data_15_2.clean()
             nova_data_15_2.save()
         except ValidationError as e:
-            error_messages = 'Sessão 15, '.join(e.messages)
+            error_messages = 'Sessão 15: ' + ', '.join(e.messages)
             return nevralgia_render_error(request, error_messages, medico, data_1, horario_1, data_2, horario_2, data_3, horario_3, data_4, horario_4, data_5, horario_5, data_6, horario_6, data_7, horario_7, data_8, horario_8, data_9, horario_9, data_10, horario_10, data_11, horario_11, data_12, horario_12, data_13, horario_13, data_14, horario_14, data_15, horario_15)
         
         if check_future(nova_data_1_1, nova_data_2_1) not in range(8,16):      

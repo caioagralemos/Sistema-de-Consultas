@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 from paciente.helpers.checar_cpf_valido import checar_cpf_valido
 from paciente.helpers.checar_nome_valido import checar_nome_valido
+from paciente.helpers.register_render_error import register_render_error
 
 from .models import Paciente
 from consultas.models import Consulta
@@ -56,23 +57,17 @@ def register(request):
             lesoes = False
 
         if password != password2:
-            messages.error(request, 'Senhas diferentes!')
-            return redirect('register')
+            return register_render_error(request, 'Senhas diferentes!', first_name, last_name, email, username, cpf, aftas, consulta, pos_cirurgia, hipersensibilidade, nevralgia, lesoes)
         elif User.objects.filter(username=username).exists():
-            messages.error(request, 'Usuário já registrado!')
-            return redirect('register')
+            return register_render_error(request, 'Usuário já registrado!', first_name, last_name, email, username, cpf, aftas, consulta, pos_cirurgia, hipersensibilidade, nevralgia, lesoes)
         elif Paciente.objects.filter(cpf=cpf).exists():
-            messages.error(request, 'CPF já registrado!')
-            return redirect('register')
+            return register_render_error(request, 'CPF já registrado!', first_name, last_name, email, username, cpf, aftas, consulta, pos_cirurgia, hipersensibilidade, nevralgia, lesoes)
         elif User.objects.filter(email=email).exists():
-            messages.error(request, 'Email já registrado!')
-            return redirect('register')
+            return register_render_error(request, 'Email já registrado!', first_name, last_name, email, username, cpf, aftas, consulta, pos_cirurgia, hipersensibilidade, nevralgia, lesoes)
         elif checar_nome_valido(nome) is False:
-            messages.error(request, 'Nome inválido!')
-            return redirect('register')
+            return register_render_error(request, 'Nome inválido!', first_name, last_name, email, username, cpf, aftas, consulta, pos_cirurgia, hipersensibilidade, nevralgia, lesoes)
         elif checar_cpf_valido(cpf) is False:
-            messages.error(request, 'CPF inválido!')
-            return redirect('register')
+            return register_render_error(request, 'CPF inválido!', first_name, last_name, email, username, cpf, aftas, consulta, pos_cirurgia, hipersensibilidade, nevralgia, lesoes)
         else:
             # Criando um novo usuário
             user = User.objects.create_user(username=username, password=password, first_name=first_name, last_name=last_name, email=email)
